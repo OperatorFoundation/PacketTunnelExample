@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CA9A8851F9691A900A2AB4E /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CA9A87B1F9691A800A2AB4E /* config.plist */; };
+		2CA9A8861F9691A900A2AB4E /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CA9A87C1F9691A800A2AB4E /* LICENSE.txt */; };
+		2CA9A8931F9692A100A2AB4E /* AddressPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8721F9691A800A2AB4E /* AddressPool.swift */; };
+		2CA9A8941F9692A500A2AB4E /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8731F9691A800A2AB4E /* ServerConfiguration.swift */; };
+		2CA9A8951F9692A500A2AB4E /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8741F9691A800A2AB4E /* ServerConnection.swift */; };
+		2CA9A8961F9692B000A2AB4E /* ServerTunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8761F9691A800A2AB4E /* ServerTunnel.swift */; };
+		2CA9A8971F9692B300A2AB4E /* ServerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8771F9691A800A2AB4E /* ServerUtils.m */; };
+		2CA9A8981F9692C500A2AB4E /* ServerTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8781F9691A800A2AB4E /* ServerTunnelConnection.swift */; };
+		2CA9A8991F9692D700A2AB4E /* UDPServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8791F9691A800A2AB4E /* UDPServerConnection.swift */; };
+		2CA9A89A1F9692E400A2AB4E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A87D1F9691A800A2AB4E /* main.swift */; };
 		460E6F401F9655DF00F011B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E6F3F1F9655DF00F011B8 /* AppDelegate.swift */; };
 		460E6F421F9655DF00F011B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E6F411F9655DF00F011B8 /* ViewController.swift */; };
 		460E6F451F9655DF00F011B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460E6F431F9655DF00F011B8 /* Main.storyboard */; };
@@ -28,6 +38,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2CA9A88A1F96926A00A2AB4E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		460E6F651F96573E00F011B8 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,6 +61,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2CA9A8721F9691A800A2AB4E /* AddressPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPool.swift; sourceTree = "<group>"; };
+		2CA9A8731F9691A800A2AB4E /* ServerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
+		2CA9A8741F9691A800A2AB4E /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
+		2CA9A8751F9691A800A2AB4E /* tunnel_server-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tunnel_server-Bridging-Header.h"; sourceTree = "<group>"; };
+		2CA9A8761F9691A800A2AB4E /* ServerTunnel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerTunnel.swift; sourceTree = "<group>"; };
+		2CA9A8771F9691A800A2AB4E /* ServerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerUtils.m; sourceTree = "<group>"; };
+		2CA9A8781F9691A800A2AB4E /* ServerTunnelConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerTunnelConnection.swift; sourceTree = "<group>"; };
+		2CA9A8791F9691A800A2AB4E /* UDPServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPServerConnection.swift; sourceTree = "<group>"; };
+		2CA9A87A1F9691A800A2AB4E /* ServerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerUtils.h; sourceTree = "<group>"; };
+		2CA9A87B1F9691A800A2AB4E /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		2CA9A87C1F9691A800A2AB4E /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		2CA9A87D1F9691A800A2AB4E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2CA9A88C1F96926A00A2AB4E /* PacketTunnelServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PacketTunnelServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacketTunnelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		460E6F3F1F9655DF00F011B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		460E6F411F9655DF00F011B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +90,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2CA9A8891F96926A00A2AB4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		460E6F391F9655DF00F011B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,12 +115,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CA9A8711F9691A800A2AB4E /* PacketTunnelServer */ = {
+			isa = PBXGroup;
+			children = (
+				2CA9A8721F9691A800A2AB4E /* AddressPool.swift */,
+				2CA9A8731F9691A800A2AB4E /* ServerConfiguration.swift */,
+				2CA9A8741F9691A800A2AB4E /* ServerConnection.swift */,
+				2CA9A8751F9691A800A2AB4E /* tunnel_server-Bridging-Header.h */,
+				2CA9A8761F9691A800A2AB4E /* ServerTunnel.swift */,
+				2CA9A8771F9691A800A2AB4E /* ServerUtils.m */,
+				2CA9A8781F9691A800A2AB4E /* ServerTunnelConnection.swift */,
+				2CA9A8791F9691A800A2AB4E /* UDPServerConnection.swift */,
+				2CA9A87A1F9691A800A2AB4E /* ServerUtils.h */,
+				2CA9A87B1F9691A800A2AB4E /* config.plist */,
+				2CA9A87C1F9691A800A2AB4E /* LICENSE.txt */,
+				2CA9A87D1F9691A800A2AB4E /* main.swift */,
+			);
+			path = PacketTunnelServer;
+			sourceTree = "<group>";
+		};
 		460E6F331F9655DF00F011B8 = {
 			isa = PBXGroup;
 			children = (
 				A0BD11481F96661F003CF1C8 /* Supporting Files */,
 				460E6F3E1F9655DF00F011B8 /* PacketTunnelExample */,
 				460E6F5A1F96573E00F011B8 /* PacketTunnelExtension */,
+				2CA9A8711F9691A800A2AB4E /* PacketTunnelServer */,
 				460E6F3D1F9655DF00F011B8 /* Products */,
 				460E6F511F96563900F011B8 /* Frameworks */,
 			);
@@ -92,6 +151,7 @@
 			children = (
 				460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */,
 				460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */,
+				2CA9A88C1F96926A00A2AB4E /* PacketTunnelServer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,6 +198,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2CA9A88B1F96926A00A2AB4E /* PacketTunnelServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CA9A8901F96926A00A2AB4E /* Build configuration list for PBXNativeTarget "PacketTunnelServer" */;
+			buildPhases = (
+				2CA9A8881F96926A00A2AB4E /* Sources */,
+				2CA9A8891F96926A00A2AB4E /* Frameworks */,
+				2CA9A88A1F96926A00A2AB4E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PacketTunnelServer;
+			productName = ivan.PacketTunnelExample.Server;
+			productReference = 2CA9A88C1F96926A00A2AB4E /* PacketTunnelServer */;
+			productType = "com.apple.product-type.tool";
+		};
 		460E6F3B1F9655DF00F011B8 /* PacketTunnelExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 460E6F4E1F9655DF00F011B8 /* Build configuration list for PBXNativeTarget "PacketTunnelExample" */;
@@ -184,6 +261,10 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Operator Foundation";
 				TargetAttributes = {
+					2CA9A88B1F96926A00A2AB4E = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 					460E6F3B1F9655DF00F011B8 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -217,6 +298,7 @@
 			targets = (
 				460E6F3B1F9655DF00F011B8 /* PacketTunnelExample */,
 				460E6F581F96573E00F011B8 /* PacketTunnelExtension */,
+				2CA9A88B1F96926A00A2AB4E /* PacketTunnelServer */,
 			);
 		};
 /* End PBXProject section */
@@ -226,8 +308,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA9A8851F9691A900A2AB4E /* config.plist in Resources */,
 				460E6F4A1F9655DF00F011B8 /* LaunchScreen.storyboard in Resources */,
 				460E6F471F9655DF00F011B8 /* Assets.xcassets in Resources */,
+				2CA9A8861F9691A900A2AB4E /* LICENSE.txt in Resources */,
 				460E6F451F9655DF00F011B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +326,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2CA9A8881F96926A00A2AB4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CA9A8931F9692A100A2AB4E /* AddressPool.swift in Sources */,
+				2CA9A8951F9692A500A2AB4E /* ServerConnection.swift in Sources */,
+				2CA9A89A1F9692E400A2AB4E /* main.swift in Sources */,
+				2CA9A8981F9692C500A2AB4E /* ServerTunnelConnection.swift in Sources */,
+				2CA9A8971F9692B300A2AB4E /* ServerUtils.m in Sources */,
+				2CA9A8991F9692D700A2AB4E /* UDPServerConnection.swift in Sources */,
+				2CA9A8961F9692B000A2AB4E /* ServerTunnel.swift in Sources */,
+				2CA9A8941F9692A500A2AB4E /* ServerConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		460E6F381F9655DF00F011B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,6 +388,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2CA9A8911F96926A00A2AB4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9966649LWK;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "PacketTunnelServer/tunnel_server-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		2CA9A8921F96926A00A2AB4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9966649LWK;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "PacketTunnelServer/tunnel_server-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		460E6F4C1F9655DF00F011B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -467,6 +594,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2CA9A8901F96926A00A2AB4E /* Build configuration list for PBXNativeTarget "PacketTunnelServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CA9A8911F96926A00A2AB4E /* Debug */,
+				2CA9A8921F96926A00A2AB4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		460E6F371F9655DF00F011B8 /* Build configuration list for PBXProject "PacketTunnelExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

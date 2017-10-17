@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		460E6F401F9655DF00F011B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E6F3F1F9655DF00F011B8 /* AppDelegate.swift */; };
+		460E6F421F9655DF00F011B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E6F411F9655DF00F011B8 /* ViewController.swift */; };
+		460E6F451F9655DF00F011B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460E6F431F9655DF00F011B8 /* Main.storyboard */; };
+		460E6F471F9655DF00F011B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 460E6F461F9655DF00F011B8 /* Assets.xcassets */; };
+		460E6F4A1F9655DF00F011B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460E6F481F9655DF00F011B8 /* LaunchScreen.storyboard */; };
+		460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E6F521F96563900F011B8 /* NetworkExtension.framework */; };
+		460E6F5C1F96573E00F011B8 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E6F5B1F96573E00F011B8 /* PacketTunnelProvider.swift */; };
+		460E6F611F96573E00F011B8 /* PacketTunnelExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		460E6F5F1F96573E00F011B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 460E6F581F96573E00F011B8;
+			remoteInfo = PacketTunnelExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		460E6F651F96573E00F011B8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				460E6F611F96573E00F011B8 /* PacketTunnelExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacketTunnelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		460E6F3F1F9655DF00F011B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		460E6F411F9655DF00F011B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		460E6F441F9655DF00F011B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		460E6F461F9655DF00F011B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		460E6F491F9655DF00F011B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		460E6F4B1F9655DF00F011B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		460E6F521F96563900F011B8 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		460E6F541F96563900F011B8 /* PacketTunnelExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExample.entitlements; sourceTree = "<group>"; };
+		460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnelExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		460E6F5B1F96573E00F011B8 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		460E6F5D1F96573E00F011B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		460E6F5E1F96573E00F011B8 /* PacketTunnelExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExtension.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		460E6F391F9655DF00F011B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		460E6F561F96573E00F011B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		460E6F331F9655DF00F011B8 = {
+			isa = PBXGroup;
+			children = (
+				460E6F3E1F9655DF00F011B8 /* PacketTunnelExample */,
+				460E6F5A1F96573E00F011B8 /* PacketTunnelExtension */,
+				460E6F3D1F9655DF00F011B8 /* Products */,
+				460E6F511F96563900F011B8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		460E6F3D1F9655DF00F011B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */,
+				460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		460E6F3E1F9655DF00F011B8 /* PacketTunnelExample */ = {
+			isa = PBXGroup;
+			children = (
+				460E6F541F96563900F011B8 /* PacketTunnelExample.entitlements */,
+				460E6F3F1F9655DF00F011B8 /* AppDelegate.swift */,
+				460E6F411F9655DF00F011B8 /* ViewController.swift */,
+				460E6F431F9655DF00F011B8 /* Main.storyboard */,
+				460E6F461F9655DF00F011B8 /* Assets.xcassets */,
+				460E6F481F9655DF00F011B8 /* LaunchScreen.storyboard */,
+				460E6F4B1F9655DF00F011B8 /* Info.plist */,
+			);
+			path = PacketTunnelExample;
+			sourceTree = "<group>";
+		};
+		460E6F511F96563900F011B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				460E6F521F96563900F011B8 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		460E6F5A1F96573E00F011B8 /* PacketTunnelExtension */ = {
+			isa = PBXGroup;
+			children = (
+				460E6F5B1F96573E00F011B8 /* PacketTunnelProvider.swift */,
+				460E6F5D1F96573E00F011B8 /* Info.plist */,
+				460E6F5E1F96573E00F011B8 /* PacketTunnelExtension.entitlements */,
+			);
+			path = PacketTunnelExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		460E6F3B1F9655DF00F011B8 /* PacketTunnelExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 460E6F4E1F9655DF00F011B8 /* Build configuration list for PBXNativeTarget "PacketTunnelExample" */;
+			buildPhases = (
+				460E6F381F9655DF00F011B8 /* Sources */,
+				460E6F391F9655DF00F011B8 /* Frameworks */,
+				460E6F3A1F9655DF00F011B8 /* Resources */,
+				460E6F651F96573E00F011B8 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				460E6F601F96573E00F011B8 /* PBXTargetDependency */,
+			);
+			name = PacketTunnelExample;
+			productName = PacketTunnelExample;
+			productReference = 460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		460E6F581F96573E00F011B8 /* PacketTunnelExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 460E6F621F96573E00F011B8 /* Build configuration list for PBXNativeTarget "PacketTunnelExtension" */;
+			buildPhases = (
+				460E6F551F96573E00F011B8 /* Sources */,
+				460E6F561F96573E00F011B8 /* Frameworks */,
+				460E6F571F96573E00F011B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PacketTunnelExtension;
+			productName = PacketTunnelExtension;
+			productReference = 460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		460E6F341F9655DF00F011B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Operator Foundation";
+				TargetAttributes = {
+					460E6F3B1F9655DF00F011B8 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					460E6F581F96573E00F011B8 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 460E6F371F9655DF00F011B8 /* Build configuration list for PBXProject "PacketTunnelExample" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 460E6F331F9655DF00F011B8;
+			productRefGroup = 460E6F3D1F9655DF00F011B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				460E6F3B1F9655DF00F011B8 /* PacketTunnelExample */,
+				460E6F581F96573E00F011B8 /* PacketTunnelExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		460E6F3A1F9655DF00F011B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				460E6F4A1F9655DF00F011B8 /* LaunchScreen.storyboard in Resources */,
+				460E6F471F9655DF00F011B8 /* Assets.xcassets in Resources */,
+				460E6F451F9655DF00F011B8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		460E6F571F96573E00F011B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		460E6F381F9655DF00F011B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				460E6F421F9655DF00F011B8 /* ViewController.swift in Sources */,
+				460E6F401F9655DF00F011B8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		460E6F551F96573E00F011B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				460E6F5C1F96573E00F011B8 /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		460E6F601F96573E00F011B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 460E6F581F96573E00F011B8 /* PacketTunnelExtension */;
+			targetProxy = 460E6F5F1F96573E00F011B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		460E6F431F9655DF00F011B8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				460E6F441F9655DF00F011B8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		460E6F481F9655DF00F011B8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				460E6F491F9655DF00F011B8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		460E6F4C1F9655DF00F011B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		460E6F4D1F9655DF00F011B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		460E6F4F1F9655DF00F011B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelExample/PacketTunnelExample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				INFOPLIST_FILE = PacketTunnelExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		460E6F501F9655DF00F011B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelExample/PacketTunnelExample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				INFOPLIST_FILE = PacketTunnelExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		460E6F631F96573E00F011B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelExtension/PacketTunnelExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				INFOPLIST_FILE = PacketTunnelExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		460E6F641F96573E00F011B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelExtension/PacketTunnelExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				INFOPLIST_FILE = PacketTunnelExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		460E6F371F9655DF00F011B8 /* Build configuration list for PBXProject "PacketTunnelExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				460E6F4C1F9655DF00F011B8 /* Debug */,
+				460E6F4D1F9655DF00F011B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		460E6F4E1F9655DF00F011B8 /* Build configuration list for PBXNativeTarget "PacketTunnelExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				460E6F4F1F9655DF00F011B8 /* Debug */,
+				460E6F501F9655DF00F011B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		460E6F621F96573E00F011B8 /* Build configuration list for PBXNativeTarget "PacketTunnelExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				460E6F631F96573E00F011B8 /* Debug */,
+				460E6F641F96573E00F011B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 460E6F341F9655DF00F011B8 /* Project object */;
+}

@@ -55,7 +55,6 @@
 		460E6F5B1F96573E00F011B8 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		460E6F5D1F96573E00F011B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		460E6F5E1F96573E00F011B8 /* PacketTunnelExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExtension.entitlements; sourceTree = "<group>"; };
-		A0BD11491F9666A7003CF1C8 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +131,6 @@
 		A0BD11481F96661F003CF1C8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A0BD11491F9666A7003CF1C8 /* Config.xcconfig */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";

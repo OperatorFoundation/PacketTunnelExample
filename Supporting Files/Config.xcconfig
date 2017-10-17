@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  PacketTunnelExample
+//
+//  Created by Benjamin Erhart on 17.10.17.
+//  Copyright © 2017 Operator Foundation. All rights reserved.
+//
+
+PTE_APPLICATION_BUNDLE_IDENTIFIER = com.example.PacketTunnelExample
+PTE_EXTENSION_BUNDLE_IDENTIFIER = com.example.PacketTunnelExample.extension
+PTE_APPLICATION_GROUP = group.com.example.PacketTunnelExample

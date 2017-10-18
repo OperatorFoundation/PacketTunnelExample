@@ -27,14 +27,34 @@
 		2CA9A8981F9692C500A2AB4E /* ServerTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8781F9691A800A2AB4E /* ServerTunnelConnection.swift */; };
 		2CA9A8991F9692D700A2AB4E /* UDPServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8791F9691A800A2AB4E /* UDPServerConnection.swift */; };
 		2CA9A89A1F9692E400A2AB4E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A87D1F9691A800A2AB4E /* main.swift */; };
-		460E6F401F9655DF00F011B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E6F3F1F9655DF00F011B8 /* AppDelegate.swift */; };
-		460E6F421F9655DF00F011B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E6F411F9655DF00F011B8 /* ViewController.swift */; };
-		460E6F451F9655DF00F011B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460E6F431F9655DF00F011B8 /* Main.storyboard */; };
-		460E6F471F9655DF00F011B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 460E6F461F9655DF00F011B8 /* Assets.xcassets */; };
-		460E6F4A1F9655DF00F011B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460E6F481F9655DF00F011B8 /* LaunchScreen.storyboard */; };
 		460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E6F521F96563900F011B8 /* NetworkExtension.framework */; };
-		460E6F5C1F96573E00F011B8 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E6F5B1F96573E00F011B8 /* PacketTunnelProvider.swift */; };
-		460E6F611F96573E00F011B8 /* PacketTunnelExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4E78C2CF1F97A93C00C9B616 /* ClientTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */; };
+		4E78C3061F97A96D00C9B616 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E78C3051F97A96D00C9B616 /* Info.plist */; };
+		4E78C34A1F97ACDB00C9B616 /* PacketTunnelExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E78C3421F97ACDB00C9B616 /* PacketTunnelExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4E78C3681F97AE9200C9B616 /* AddEditConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C34F1F97AE9200C9B616 /* AddEditConfiguration.swift */; };
+		4E78C3691F97AE9200C9B616 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3501F97AE9200C9B616 /* AppDelegate.swift */; };
+		4E78C36B1F97AE9200C9B616 /* ConfigurationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3521F97AE9200C9B616 /* ConfigurationListController.swift */; };
+		4E78C36C1F97AE9200C9B616 /* ConfigurationParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3531F97AE9200C9B616 /* ConfigurationParametersViewController.swift */; };
+		4E78C36D1F97AE9200C9B616 /* ConnectionRuleAddEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3541F97AE9200C9B616 /* ConnectionRuleAddEditController.swift */; };
+		4E78C36E1F97AE9200C9B616 /* ConnectionRuleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3551F97AE9200C9B616 /* ConnectionRuleListController.swift */; };
+		4E78C3701F97AE9300C9B616 /* EnumPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3571F97AE9200C9B616 /* EnumPickerController.swift */; };
+		4E78C3711F97AE9300C9B616 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E78C3581F97AE9200C9B616 /* Images.xcassets */; };
+		4E78C3721F97AE9300C9B616 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E78C3591F97AE9200C9B616 /* LaunchScreen.xib */; };
+		4E78C3731F97AE9300C9B616 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C35A1F97AE9200C9B616 /* ListViewController.swift */; };
+		4E78C3741F97AE9300C9B616 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E78C35B1F97AE9200C9B616 /* Main.storyboard */; };
+		4E78C3751F97AE9300C9B616 /* OnDemandRuleAddEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C35C1F97AE9200C9B616 /* OnDemandRuleAddEditController.swift */; };
+		4E78C3761F97AE9300C9B616 /* OnDemandRuleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C35D1F97AE9200C9B616 /* OnDemandRuleListController.swift */; };
+		4E78C3771F97AE9300C9B616 /* ProxyAutoConfigScriptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C35E1F97AE9200C9B616 /* ProxyAutoConfigScriptController.swift */; };
+		4E78C3781F97AE9300C9B616 /* ProxyServerAddEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C35F1F97AE9200C9B616 /* ProxyServerAddEditController.swift */; };
+		4E78C3791F97AE9300C9B616 /* ProxySettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3601F97AE9200C9B616 /* ProxySettingsController.swift */; };
+		4E78C37A1F97AE9300C9B616 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3611F97AE9200C9B616 /* StatusViewController.swift */; };
+		4E78C37B1F97AE9300C9B616 /* StringListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3621F97AE9200C9B616 /* StringListController.swift */; };
+		4E78C37C1F97AE9300C9B616 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E78C3641F97AE9200C9B616 /* Info.plist */; };
+		4E78C37D1F97AE9300C9B616 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3661F97AE9200C9B616 /* SwitchCell.swift */; };
+		4E78C37E1F97AE9300C9B616 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3671F97AE9200C9B616 /* TextFieldCell.swift */; };
+		4E78C3801F97B47200C9B616 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C37F1F97B47200C9B616 /* PacketTunnelProvider.swift */; };
+		4E78C3831F97B63200C9B616 /* PacketTunnelServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; };
+		4E78C3841F97B63800C9B616 /* ClientTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,12 +65,19 @@
 			remoteGlobalIDString = 2C3A08E41F979E590033433F;
 			remoteInfo = ivan.PacketTunnelServices;
 		};
-		460E6F5F1F96573E00F011B8 /* PBXContainerItemProxy */ = {
+		4E78C3481F97ACDB00C9B616 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 460E6F581F96573E00F011B8;
-			remoteInfo = PacketTunnelExtension;
+			remoteGlobalIDString = 4E78C3411F97ACDB00C9B616;
+			remoteInfo = PacketTunnel;
+		};
+		4E78C3811F97B62D00C9B616 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C3A08E41F979E590033433F;
+			remoteInfo = PacketTunnelServices;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -81,7 +108,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				460E6F611F96573E00F011B8 /* PacketTunnelExtension.appex in Embed App Extensions */,
+				4E78C34A1F97ACDB00C9B616 /* PacketTunnelExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,18 +137,35 @@
 		2CA9A87D1F9691A800A2AB4E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2CA9A88C1F96926A00A2AB4E /* PacketTunnelServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PacketTunnelServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacketTunnelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		460E6F3F1F9655DF00F011B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		460E6F411F9655DF00F011B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		460E6F441F9655DF00F011B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		460E6F461F9655DF00F011B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		460E6F491F9655DF00F011B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		460E6F4B1F9655DF00F011B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		460E6F521F96563900F011B8 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		460E6F541F96563900F011B8 /* PacketTunnelExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExample.entitlements; sourceTree = "<group>"; };
-		460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnelExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		460E6F5B1F96573E00F011B8 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
-		460E6F5D1F96573E00F011B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		460E6F5E1F96573E00F011B8 /* PacketTunnelExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExtension.entitlements; sourceTree = "<group>"; };
+		4E78C2C51F97A87D00C9B616 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../SimpleTunnel/README.md; sourceTree = "<group>"; };
+		4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTunnelConnection.swift; sourceTree = "<group>"; };
+		4E78C3051F97A96D00C9B616 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E78C3421F97ACDB00C9B616 /* PacketTunnelExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnelExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E78C34F1F97AE9200C9B616 /* AddEditConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditConfiguration.swift; sourceTree = "<group>"; };
+		4E78C3501F97AE9200C9B616 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4E78C3521F97AE9200C9B616 /* ConfigurationListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationListController.swift; sourceTree = "<group>"; };
+		4E78C3531F97AE9200C9B616 /* ConfigurationParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationParametersViewController.swift; sourceTree = "<group>"; };
+		4E78C3541F97AE9200C9B616 /* ConnectionRuleAddEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionRuleAddEditController.swift; sourceTree = "<group>"; };
+		4E78C3551F97AE9200C9B616 /* ConnectionRuleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionRuleListController.swift; sourceTree = "<group>"; };
+		4E78C3571F97AE9200C9B616 /* EnumPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumPickerController.swift; sourceTree = "<group>"; };
+		4E78C3581F97AE9200C9B616 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4E78C3591F97AE9200C9B616 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		4E78C35A1F97AE9200C9B616 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		4E78C35B1F97AE9200C9B616 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4E78C35C1F97AE9200C9B616 /* OnDemandRuleAddEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDemandRuleAddEditController.swift; sourceTree = "<group>"; };
+		4E78C35D1F97AE9200C9B616 /* OnDemandRuleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDemandRuleListController.swift; sourceTree = "<group>"; };
+		4E78C35E1F97AE9200C9B616 /* ProxyAutoConfigScriptController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxyAutoConfigScriptController.swift; sourceTree = "<group>"; };
+		4E78C35F1F97AE9200C9B616 /* ProxyServerAddEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxyServerAddEditController.swift; sourceTree = "<group>"; };
+		4E78C3601F97AE9200C9B616 /* ProxySettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxySettingsController.swift; sourceTree = "<group>"; };
+		4E78C3611F97AE9200C9B616 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		4E78C3621F97AE9200C9B616 /* StringListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringListController.swift; sourceTree = "<group>"; };
+		4E78C3641F97AE9200C9B616 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E78C3661F97AE9200C9B616 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		4E78C3671F97AE9200C9B616 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		4E78C37F1F97B47200C9B616 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		4E78C3851F97C25600C9B616 /* PacketTunnelExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExample.entitlements; sourceTree = "<group>"; };
+		4E78C3871F97CA5E00C9B616 /* PacketTunnelExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,10 +192,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460E6F561F96573E00F011B8 /* Frameworks */ = {
+		4E78C33F1F97ACDB00C9B616 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E78C3831F97B63200C9B616 /* PacketTunnelServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,9 +238,10 @@
 		460E6F331F9655DF00F011B8 = {
 			isa = PBXGroup;
 			children = (
+				4E78C34E1F97AE9200C9B616 /* PacketTunnelExample */,
+				4E78C2CA1F97A92D00C9B616 /* PacketTunnelExtension */,
+				4E78C2C51F97A87D00C9B616 /* README.md */,
 				2C3A08D21F979D870033433F /* PacketTunnelServices */,
-				460E6F3E1F9655DF00F011B8 /* PacketTunnelExample */,
-				460E6F5A1F96573E00F011B8 /* PacketTunnelExtension */,
 				2CA9A8711F9691A800A2AB4E /* PacketTunnelServer */,
 				460E6F3D1F9655DF00F011B8 /* Products */,
 				460E6F511F96563900F011B8 /* Frameworks */,
@@ -206,25 +252,11 @@
 			isa = PBXGroup;
 			children = (
 				460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */,
-				460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */,
 				2CA9A88C1F96926A00A2AB4E /* PacketTunnelServer */,
 				2C3A08E51F979E590033433F /* PacketTunnelServices.framework */,
+				4E78C3421F97ACDB00C9B616 /* PacketTunnelExtension.appex */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		460E6F3E1F9655DF00F011B8 /* PacketTunnelExample */ = {
-			isa = PBXGroup;
-			children = (
-				460E6F541F96563900F011B8 /* PacketTunnelExample.entitlements */,
-				460E6F3F1F9655DF00F011B8 /* AppDelegate.swift */,
-				460E6F411F9655DF00F011B8 /* ViewController.swift */,
-				460E6F431F9655DF00F011B8 /* Main.storyboard */,
-				460E6F461F9655DF00F011B8 /* Assets.xcassets */,
-				460E6F481F9655DF00F011B8 /* LaunchScreen.storyboard */,
-				460E6F4B1F9655DF00F011B8 /* Info.plist */,
-			);
-			path = PacketTunnelExample;
 			sourceTree = "<group>";
 		};
 		460E6F511F96563900F011B8 /* Frameworks */ = {
@@ -235,14 +267,60 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		460E6F5A1F96573E00F011B8 /* PacketTunnelExtension */ = {
+		4E78C2CA1F97A92D00C9B616 /* PacketTunnelExtension */ = {
 			isa = PBXGroup;
 			children = (
-				460E6F5B1F96573E00F011B8 /* PacketTunnelProvider.swift */,
-				460E6F5D1F96573E00F011B8 /* Info.plist */,
-				460E6F5E1F96573E00F011B8 /* PacketTunnelExtension.entitlements */,
+				4E78C37F1F97B47200C9B616 /* PacketTunnelProvider.swift */,
+				4E78C3031F97A96100C9B616 /* Supporting Files */,
+				4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */,
 			);
 			path = PacketTunnelExtension;
+			sourceTree = "<group>";
+		};
+		4E78C3031F97A96100C9B616 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E78C3871F97CA5E00C9B616 /* PacketTunnelExtension.entitlements */,
+				4E78C3051F97A96D00C9B616 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4E78C34E1F97AE9200C9B616 /* PacketTunnelExample */ = {
+			isa = PBXGroup;
+			children = (
+				4E78C3591F97AE9200C9B616 /* LaunchScreen.xib */,
+				4E78C35B1F97AE9200C9B616 /* Main.storyboard */,
+				4E78C34F1F97AE9200C9B616 /* AddEditConfiguration.swift */,
+				4E78C3501F97AE9200C9B616 /* AppDelegate.swift */,
+				4E78C3521F97AE9200C9B616 /* ConfigurationListController.swift */,
+				4E78C3531F97AE9200C9B616 /* ConfigurationParametersViewController.swift */,
+				4E78C3541F97AE9200C9B616 /* ConnectionRuleAddEditController.swift */,
+				4E78C3551F97AE9200C9B616 /* ConnectionRuleListController.swift */,
+				4E78C3571F97AE9200C9B616 /* EnumPickerController.swift */,
+				4E78C3581F97AE9200C9B616 /* Images.xcassets */,
+				4E78C35A1F97AE9200C9B616 /* ListViewController.swift */,
+				4E78C35C1F97AE9200C9B616 /* OnDemandRuleAddEditController.swift */,
+				4E78C35D1F97AE9200C9B616 /* OnDemandRuleListController.swift */,
+				4E78C35E1F97AE9200C9B616 /* ProxyAutoConfigScriptController.swift */,
+				4E78C35F1F97AE9200C9B616 /* ProxyServerAddEditController.swift */,
+				4E78C3601F97AE9200C9B616 /* ProxySettingsController.swift */,
+				4E78C3611F97AE9200C9B616 /* StatusViewController.swift */,
+				4E78C3621F97AE9200C9B616 /* StringListController.swift */,
+				4E78C3631F97AE9200C9B616 /* Supporting Files */,
+				4E78C3661F97AE9200C9B616 /* SwitchCell.swift */,
+				4E78C3671F97AE9200C9B616 /* TextFieldCell.swift */,
+			);
+			path = PacketTunnelExample;
+			sourceTree = "<group>";
+		};
+		4E78C3631F97AE9200C9B616 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E78C3851F97C25600C9B616 /* PacketTunnelExample.entitlements */,
+				4E78C3641F97AE9200C9B616 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,29 +385,30 @@
 			buildRules = (
 			);
 			dependencies = (
-				460E6F601F96573E00F011B8 /* PBXTargetDependency */,
 				2C3A08EB1F979E590033433F /* PBXTargetDependency */,
+				4E78C3491F97ACDB00C9B616 /* PBXTargetDependency */,
 			);
 			name = PacketTunnelExample;
 			productName = PacketTunnelExample;
 			productReference = 460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		460E6F581F96573E00F011B8 /* PacketTunnelExtension */ = {
+		4E78C3411F97ACDB00C9B616 /* PacketTunnelExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 460E6F621F96573E00F011B8 /* Build configuration list for PBXNativeTarget "PacketTunnelExtension" */;
+			buildConfigurationList = 4E78C34B1F97ACDB00C9B616 /* Build configuration list for PBXNativeTarget "PacketTunnelExtension" */;
 			buildPhases = (
-				460E6F551F96573E00F011B8 /* Sources */,
-				460E6F561F96573E00F011B8 /* Frameworks */,
-				460E6F571F96573E00F011B8 /* Resources */,
+				4E78C33E1F97ACDB00C9B616 /* Sources */,
+				4E78C33F1F97ACDB00C9B616 /* Frameworks */,
+				4E78C3401F97ACDB00C9B616 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4E78C3821F97B62D00C9B616 /* PBXTargetDependency */,
 			);
 			name = PacketTunnelExtension;
-			productName = PacketTunnelExtension;
-			productReference = 460E6F591F96573E00F011B8 /* PacketTunnelExtension.appex */;
+			productName = PacketTunnel;
+			productReference = 4E78C3421F97ACDB00C9B616 /* PacketTunnelExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -338,7 +417,7 @@
 		460E6F341F9655DF00F011B8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					2C3A08E41F979E590033433F = {
@@ -356,13 +435,17 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
 							com.apple.NetworkExtensions.iOS = {
 								enabled = 1;
 							};
 						};
 					};
-					460E6F581F96573E00F011B8 = {
-						CreatedOnToolsVersion = 9.0;
+					4E78C3411F97ACDB00C9B616 = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -381,9 +464,9 @@
 			projectRoot = "";
 			targets = (
 				460E6F3B1F9655DF00F011B8 /* PacketTunnelExample */,
-				460E6F581F96573E00F011B8 /* PacketTunnelExtension */,
 				2CA9A88B1F96926A00A2AB4E /* PacketTunnelServer */,
 				2C3A08E41F979E590033433F /* PacketTunnelServices */,
+				4E78C3411F97ACDB00C9B616 /* PacketTunnelExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -400,14 +483,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E78C37C1F97AE9300C9B616 /* Info.plist in Resources */,
+				4E78C3741F97AE9300C9B616 /* Main.storyboard in Resources */,
+				4E78C3061F97A96D00C9B616 /* Info.plist in Resources */,
+				4E78C3711F97AE9300C9B616 /* Images.xcassets in Resources */,
 				2CA9A8851F9691A900A2AB4E /* config.plist in Resources */,
-				460E6F4A1F9655DF00F011B8 /* LaunchScreen.storyboard in Resources */,
-				460E6F471F9655DF00F011B8 /* Assets.xcassets in Resources */,
-				460E6F451F9655DF00F011B8 /* Main.storyboard in Resources */,
+				4E78C3721F97AE9300C9B616 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460E6F571F96573E00F011B8 /* Resources */ = {
+		4E78C3401F97ACDB00C9B616 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -451,16 +536,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				460E6F421F9655DF00F011B8 /* ViewController.swift in Sources */,
-				460E6F401F9655DF00F011B8 /* AppDelegate.swift in Sources */,
+				4E78C3691F97AE9200C9B616 /* AppDelegate.swift in Sources */,
+				4E78C3681F97AE9200C9B616 /* AddEditConfiguration.swift in Sources */,
+				4E78C3761F97AE9300C9B616 /* OnDemandRuleListController.swift in Sources */,
+				4E78C3751F97AE9300C9B616 /* OnDemandRuleAddEditController.swift in Sources */,
+				4E78C3731F97AE9300C9B616 /* ListViewController.swift in Sources */,
+				4E78C37E1F97AE9300C9B616 /* TextFieldCell.swift in Sources */,
+				4E78C36C1F97AE9200C9B616 /* ConfigurationParametersViewController.swift in Sources */,
+				4E78C36D1F97AE9200C9B616 /* ConnectionRuleAddEditController.swift in Sources */,
+				4E78C2CF1F97A93C00C9B616 /* ClientTunnelConnection.swift in Sources */,
+				4E78C37D1F97AE9300C9B616 /* SwitchCell.swift in Sources */,
+				4E78C3701F97AE9300C9B616 /* EnumPickerController.swift in Sources */,
+				4E78C36E1F97AE9200C9B616 /* ConnectionRuleListController.swift in Sources */,
+				4E78C36B1F97AE9200C9B616 /* ConfigurationListController.swift in Sources */,
+				4E78C3791F97AE9300C9B616 /* ProxySettingsController.swift in Sources */,
+				4E78C3781F97AE9300C9B616 /* ProxyServerAddEditController.swift in Sources */,
+				4E78C3771F97AE9300C9B616 /* ProxyAutoConfigScriptController.swift in Sources */,
+				4E78C37B1F97AE9300C9B616 /* StringListController.swift in Sources */,
+				4E78C37A1F97AE9300C9B616 /* StatusViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460E6F551F96573E00F011B8 /* Sources */ = {
+		4E78C33E1F97ACDB00C9B616 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				460E6F5C1F96573E00F011B8 /* PacketTunnelProvider.swift in Sources */,
+				4E78C3841F97B63800C9B616 /* ClientTunnelConnection.swift in Sources */,
+				4E78C3801F97B47200C9B616 /* PacketTunnelProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,31 +574,17 @@
 			target = 2C3A08E41F979E590033433F /* PacketTunnelServices */;
 			targetProxy = 2C3A08EA1F979E590033433F /* PBXContainerItemProxy */;
 		};
-		460E6F601F96573E00F011B8 /* PBXTargetDependency */ = {
+		4E78C3491F97ACDB00C9B616 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 460E6F581F96573E00F011B8 /* PacketTunnelExtension */;
-			targetProxy = 460E6F5F1F96573E00F011B8 /* PBXContainerItemProxy */;
+			target = 4E78C3411F97ACDB00C9B616 /* PacketTunnelExtension */;
+			targetProxy = 4E78C3481F97ACDB00C9B616 /* PBXContainerItemProxy */;
+		};
+		4E78C3821F97B62D00C9B616 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C3A08E41F979E590033433F /* PacketTunnelServices */;
+			targetProxy = 4E78C3811F97B62D00C9B616 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		460E6F431F9655DF00F011B8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				460E6F441F9655DF00F011B8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		460E6F481F9655DF00F011B8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				460E6F491F9655DF00F011B8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2C3A08EF1F979E590033433F /* Debug */ = {
@@ -512,6 +600,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PacketTunnelServices/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -536,6 +625,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PacketTunnelServices/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -625,7 +715,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -676,7 +766,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -689,13 +779,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = PacketTunnelExample/PacketTunnelExample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "PacketTunnelExample/Supporting Files/PacketTunnelExample.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = PacketTunnelExample/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -707,47 +799,57 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = PacketTunnelExample/PacketTunnelExample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "PacketTunnelExample/Supporting Files/PacketTunnelExample.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = PacketTunnelExample/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		460E6F631F96573E00F011B8 /* Debug */ = {
+		4E78C34C1F97ACDB00C9B616 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = PacketTunnelExtension/PacketTunnelExtension.entitlements;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "PacketTunnelExtension/Supporting Files/PacketTunnelExtension.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = PacketTunnelExtension/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExtension/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		460E6F641F96573E00F011B8 /* Release */ = {
+		4E78C34D1F97ACDB00C9B616 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = PacketTunnelExtension/PacketTunnelExtension.entitlements;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "PacketTunnelExtension/Supporting Files/PacketTunnelExtension.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = PacketTunnelExtension/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExtension/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -791,11 +893,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		460E6F621F96573E00F011B8 /* Build configuration list for PBXNativeTarget "PacketTunnelExtension" */ = {
+		4E78C34B1F97ACDB00C9B616 /* Build configuration list for PBXNativeTarget "PacketTunnelExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				460E6F631F96573E00F011B8 /* Debug */,
-				460E6F641F96573E00F011B8 /* Release */,
+				4E78C34C1F97ACDB00C9B616 /* Debug */,
+				4E78C34D1F97ACDB00C9B616 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

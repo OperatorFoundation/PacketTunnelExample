@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C3A08DF1F979D870033433F /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A08D91F979D870033433F /* LICENSE.txt */; };
 		2C3A08EC1F979E590033433F /* PacketTunnelServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; };
 		2C3A08ED1F979E590033433F /* PacketTunnelServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2C3A08F21F979E900033433F /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D31F979D870033433F /* Connection.swift */; };
@@ -20,7 +19,6 @@
 		2C3A08FD1F97A0A90033433F /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D71F979D870033433F /* util.swift */; };
 		2C3A08FE1F97A0A90033433F /* Tunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D81F979D870033433F /* Tunnel.swift */; };
 		2CA9A8851F9691A900A2AB4E /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CA9A87B1F9691A800A2AB4E /* config.plist */; };
-		2CA9A8861F9691A900A2AB4E /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CA9A87C1F9691A800A2AB4E /* LICENSE.txt */; };
 		2CA9A8931F9692A100A2AB4E /* AddressPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8721F9691A800A2AB4E /* AddressPool.swift */; };
 		2CA9A8941F9692A500A2AB4E /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8731F9691A800A2AB4E /* ServerConfiguration.swift */; };
 		2CA9A8951F9692A500A2AB4E /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8741F9691A800A2AB4E /* ServerConnection.swift */; };
@@ -403,11 +401,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C3A08DF1F979D870033433F /* LICENSE.txt in Resources */,
 				2CA9A8851F9691A900A2AB4E /* config.plist in Resources */,
 				460E6F4A1F9655DF00F011B8 /* LaunchScreen.storyboard in Resources */,
 				460E6F471F9655DF00F011B8 /* Assets.xcassets in Resources */,
-				2CA9A8861F9691A900A2AB4E /* LICENSE.txt in Resources */,
 				460E6F451F9655DF00F011B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

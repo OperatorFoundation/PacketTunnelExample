@@ -340,7 +340,6 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Operator Foundation";
 				TargetAttributes = {
 					2C3A08E41F979E590033433F = {
 						CreatedOnToolsVersion = 9.0;

@@ -13,14 +13,41 @@ configuration in order to avoid accidental checkin of these:
 $ git config --local include.path ../.gitconfig
 ```
 
-## Manual Signing
+## Setup app identifiers
 
-You will need:
- - A unique bundle identifier for the app (i.e. `com.example.packettunnel`)
- - A unique bundle identifier for the network extension (i.e. `com.example.packettunnel.extension`)
- - A group ID (i.e. `group.com.example.packettunnel`)
+- You need to pick 3 *unique* identifiers. (as in: unique in the whole App Store!)
+    Follow the pattern as per the examples:
 
-- This requires some manual set up in Apple's 
+    1. A bundle ID (`com.example.PacketTunnelExample`)
+    2. An extension bundle ID (`com.example.PacketTunnelExample.extension`)
+    3. A group ID (`group.com.example.PacketTunnelExample`)
+
+- Set these identifiers on the according targets of the project configuration:
+
+    1. The bundle ID at the `General` tab of the `PacketTunnelExample` target.
+    2. The extension bundle ID at the `General` tab of the `PacketTunnelExtension`
+       target.
+    3. The group ID at the `App Groups` section in the `Capabilities` tab of
+       both mentioned targets. (Enable `App Groups` if it's not.)
+    4. Delete the example group ID, if there.
+    5. Also in the `Capabilities` tab of both targets turn on the `Network Extensions`
+       capability and check the `Packet Tunnel` option, if not enabled.
+    6. Fix the group ID in both files `PacketTunnelExample.entitlements` and
+       `PacketTunnelExtension.entitlements`. 
+
+## Signing
+
+You can try to enable automatic signing, but the results are mixed. It seems,
+that some people can make it work, some others not, depending on their Apple
+Developer account and it's history. (Seems to be a bug on the server side with
+some accounts.)
+
+A free account is definitely not enough for the Network Extension to work. You
+will need a paid Apple Developer account!
+
+### Manual Signing
+
+- Go to Apple's 
     [developer portal](https://developer.apple.com/account/ios/identifier/bundle):
 
     1. Generate an `App ID` using your bundle identifier.
@@ -29,14 +56,9 @@ You will need:
     4. 5. Create two new development `Provisioning Profiles`, one for each `App ID`.
 
 - Load the provisioning profiles into Xcode using Xcode -> Preferences -> Accounts ->
-[Your Apple-ID] -> Download All Profiles
+  [Your Apple-ID] -> Download All Profiles or in the `General` tab of both targets use
+  `Provisioning Profile` -> `Download Profile...`
     
-- In Xcode:
-    1. In the capabilities tab of the PacketTunnelExample target enable your new `App Group`.
-    2. Also in the capabilities tabs of this target turn on the Network Extension capability and check the packet tunnel option.
-    3. Repeat the last two steps for the PacketTunnelExtension.
-    2. Check the `Network Extensions` checkbox on both of the `App ID`s.
-
 ## Running Test Server
 
 You will need to run the test server on your development machine in order to test the packet tunnel client.

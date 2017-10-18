@@ -1,6 +1,18 @@
 # PacketTunnelExample
 
 ## This project is currently under construction, take nothing at face value <3 
+
+## Git filter to avoid accidental checkin of private Xcode identifiers
+
+Execute this on your project root to source the `.gitconfig` file which
+filters PRODUCT_BUNDLE_IDENTIFIER, DEVELOPMENT_TEAM, PROVISIONING_PROFILE
+and CODE_SIGN_STYLE keys from your Xcode project configuration in order to
+avoid accidental checkin of these:
+
+```bash
+$ git config --local include.path ../.gitconfig
+```
+
 ## Manual Signing
 
 You will need:

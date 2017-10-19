@@ -80,7 +80,7 @@ class AddressPool {
 			}
 		}
 
-		simpleTunnelLog("Allocated address \(result)")
+        simpleTunnelLog("Allocated address \(String(describing: result))")
 		return result
 	}
 

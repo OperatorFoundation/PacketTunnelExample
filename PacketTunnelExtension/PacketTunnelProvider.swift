@@ -24,7 +24,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 	var pendingStartCompletion: ((Error?) -> Void)?
 
 	/// The completion handler to call when the tunnel is fully disconnected.
-	var pendingStopCompletion: ((Void) -> Void)?
+	var pendingStopCompletion: (() -> Void)?
 
 	// MARK: NEPacketTunnelProvider
 
@@ -114,7 +114,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 		}
 		else if pendingStopCompletion != nil {
 			// Closed as the result of a call to stopTunnelWithReason, call the stop completion handler.
-            pendingStopCompletion?(())
+            pendingStopCompletion?()
 			pendingStopCompletion = nil
 		}
 		else {

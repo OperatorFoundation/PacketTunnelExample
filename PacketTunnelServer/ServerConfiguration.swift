@@ -81,6 +81,33 @@ class ServerConfiguration {
 
 		return true
 	}
+    
+    /// Load the default configuration when settings from a plist are not available.
+    func loadDefault() -> Bool
+    {
+        var newConfiguration = [String: AnyObject]()
+        
+        let startAddress = "192.168.2.2"
+        let endAddress = "192.168.2.10"
+        
+        addressPool = AddressPool(startAddress: startAddress, endAddress: endAddress)
+        
+        // The configuration dictionary gets sent to clients as the tunnel settings dictionary. Do not include the IP pool parameters.
+        let IPv4Dictionary = [NSObject: AnyObject]()
+        newConfiguration[SettingsKey.IPv4.rawValue] = IPv4Dictionary as AnyObject?
+        
+        // Get the current system default resolver for DNS configuration.
+        let (DNSServers, DNSSearchDomains) = ServerConfiguration.copyDNSConfigurationFromSystem()
+        
+        newConfiguration[SettingsKey.DNS.rawValue] = [
+            SettingsKey.Servers.rawValue: DNSServers,
+            SettingsKey.SearchDomains.rawValue: DNSSearchDomains
+            ] as AnyObject
+
+        configuration = newConfiguration
+        
+        return true
+    }
 
 	/// Copy the default resolver configuration from the system on which the server is running.
 	class func copyDNSConfigurationFromSystem() -> ([String], [String]) {

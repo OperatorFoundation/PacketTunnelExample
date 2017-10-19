@@ -37,7 +37,7 @@ class ServerTunnelConnection: Connection {
 
 		let properties = createMessagePropertiesForConnection(identifier, commandType: .openResult, extraProperties: resultProperties)
 
-		serverTunnel.sendMessage(properties)
+		_ = serverTunnel.sendMessage(properties)
 	}
 
 	/// "Open" the connection by setting up the UTUN interface.

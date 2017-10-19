@@ -63,8 +63,20 @@ class ServerTunnel: Tunnel, TunnelDelegate, StreamDelegate {
 	}
 
 	/// Load the configuration from disk.
-	class func initializeWithConfigurationFile(path: String) -> Bool {
-		return ServerTunnel.configuration.loadFromFileAtPath(path: path)
+    class func initializeWithDefaultConfiguration() -> Bool
+    {
+        return ServerTunnel.configuration.loadDefault()
+    }
+    
+	class func initializeWithConfigurationFile(path: String) -> Bool
+    {
+        let userProvidedConfig = ServerTunnel.configuration.loadFromFileAtPath(path: path)
+        if userProvidedConfig == false
+        {
+            return ServerTunnel.configuration.loadDefault()
+        }
+        
+		return userProvidedConfig
 	}
 
 	// MARK: Interface

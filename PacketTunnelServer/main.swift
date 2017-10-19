@@ -17,12 +17,6 @@ let interruptSignalSource = DispatchSource.makeSignalSource(signal: SIGINT, queu
 /// Dispatch source to catch and handle SIGTERM
 let termSignalSource = DispatchSource.makeSignalSource(signal: SIGTERM, queue: DispatchQueue.main) as! DispatchSource
 
-/// Basic sanity check of the parameters.
-if CommandLine.arguments.count < 3 {
-	print("Usage: \(CommandLine.arguments[0]) <port> <config-file>")
-	exit(1)
-}
-
 func ignore(ig: Int32)  {
     print("ignore:\(ig)")
 }
@@ -30,19 +24,45 @@ signal(SIGTERM, ignore)
 signal(SIGINT, ignore)
 
 let portString = CommandLine.arguments[1]
-let configurationPath = CommandLine.arguments[2]
 let networkService: NetService
 
 // Initialize the server.
+var configurationPath: String?
 
-if !ServerTunnel.initializeWithConfigurationFile(path: configurationPath) {
-	exit(1)
+if CommandLine.arguments.count > 2
+{
+    let newConfigurationPath: String = CommandLine.arguments[2]
+    configurationPath = newConfigurationPath
+    if !ServerTunnel.initializeWithConfigurationFile(path: configurationPath!)
+    {
+        //We thought we had a config file but it didn't work, let's try the default
+        if !ServerTunnel.initializeWithDefaultConfiguration()
+        {
+            exit(1)
+        }
+    }
+}
+/// Basic sanity check of the parameters.
+else if CommandLine.arguments.count < 2
+{
+    print("Missing Server Config Information 😮")
+    print("Usage: \(CommandLine.arguments[0]) <port> [config-file]")
+    exit(1)
+}
+else
+{
+    if !ServerTunnel.initializeWithDefaultConfiguration()
+    {
+        exit(1)
+    }
 }
 
-if let portNumber = Int(portString)  {
+if let portNumber = Int(portString)
+{
 	networkService = ServerTunnel.startListeningOnPort(port: Int32(portNumber))
 }
-else {
+else
+{
 	print("Invalid port: \(portString)")
 	exit(1)
 }

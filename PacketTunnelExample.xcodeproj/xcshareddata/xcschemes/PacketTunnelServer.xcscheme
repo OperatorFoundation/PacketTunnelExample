@@ -69,6 +69,10 @@
             argument = "8080"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/brandon/PacketTunnelExample/PacketTunnelServer/config.plist"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>

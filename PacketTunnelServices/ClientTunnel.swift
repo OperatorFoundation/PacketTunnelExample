@@ -54,8 +54,8 @@ open class ClientTunnel: Tunnel {
 		if let colonRange = serverAddress.rangeOfCharacter(from: CharacterSet(charactersIn: ":"), options: [], range: nil) {
 			// The server is specified in the configuration as <host>:<port>.
             
-            let hostname = serverAddress.substring(with: serverAddress.startIndex..<colonRange.lowerBound)
-			let portString = serverAddress.substring(with: serverAddress.index(after: colonRange.lowerBound)..<serverAddress.endIndex)
+            let hostname = String(serverAddress[..<colonRange.lowerBound])
+			let portString = String(serverAddress[colonRange.lowerBound...])
 
 			guard !hostname.isEmpty && !portString.isEmpty else {
 				return .badConfiguration

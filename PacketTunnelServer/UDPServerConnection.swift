@@ -171,7 +171,8 @@ class UDPServerConnection: Connection {
 				serverAddress.setPort(port)
 
                 let uint8Ptr = UnsafeMutablePointer<UInt8>.allocate(capacity: data.count)
-                uint8Ptr.initialize(from: data)
+                let uint8BufPtr = UnsafeMutableBufferPointer<UInt8>.init(start: uint8Ptr, count: data.count)
+                _ = uint8BufPtr.initialize(from: data)
                 
                 let rawPtr = UnsafeRawPointer(uint8Ptr)
                 
@@ -190,8 +191,11 @@ class UDPServerConnection: Connection {
 				/*sent = withUnsafePointer(to: &serverAddress.sin6) {
 					sendto(UDPSocket, data.bytes, data.count, 0, UnsafePointer($0), socklen_t(serverAddress.sin6.sin6_len))
 				}*/
+                
                 let uint8Ptr = UnsafeMutablePointer<UInt8>.allocate(capacity: data.count)
-                uint8Ptr.initialize(from: data)
+                let uint8BufPtr = UnsafeMutableBufferPointer<UInt8>.init(start: uint8Ptr, count: data.count)
+                _ = uint8BufPtr.initialize(from: data)
+
                 let uint8PtrCount = data.count
                 let rawPtr = UnsafeRawPointer(uint8Ptr)
                 sent = withUnsafePointer(to: &serverAddress.sin6) {

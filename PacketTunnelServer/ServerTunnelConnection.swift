@@ -260,10 +260,10 @@ class ServerTunnelConnection: Connection {
 
 			var protocolNumber = protocols[index].uint32Value.bigEndian
             let uint8Ptr = UnsafeMutablePointer<UInt8>.allocate(capacity:packet.count)
-            uint8Ptr.initialize(to:0, count:packet.count)
+            uint8Ptr.initialize(repeating:0, count:packet.count)
             packet.copyBytes(to:uint8Ptr, count:packet.count)
            // let uint8PtrCount = packets.count
-            let buffer = uint8Ptr.deinitialize()
+            let buffer = uint8Ptr.deinitialize(count: packet.count)
 			//let buffer = UnsafeMutablePointer<Void>(packet.bytes)
 			var iovecList = [ iovec(iov_base: &protocolNumber, iov_len: MemoryLayout.size(ofValue: protocolNumber)), iovec(iov_base: buffer, iov_len: packet.count) ]
 

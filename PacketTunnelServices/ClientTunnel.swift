@@ -8,6 +8,8 @@
 
 import Foundation
 import NetworkExtension
+import Meek
+import Transport
 
 /// Make NEVPNStatus convertible to a string
 extension NWTCPConnectionState: CustomStringConvertible {
@@ -29,7 +31,7 @@ open class ClientTunnel: Tunnel {
 	// MARK: Properties
 
 	/// The tunnel connection.
-	open var connection: NWTCPConnection?
+	open var connection: MeekTCPConnection?
 
 	/// The last error that occurred on the tunnel.
 	open var lastError: Error?
@@ -43,36 +45,40 @@ open class ClientTunnel: Tunnel {
 	// MARK: Interface
 
 	/// Start the TCP connection to the tunnel server.
-	open func startTunnel(_ provider: NETunnelProvider) -> SimpleTunnelError? {
+	open func startTunnel(_ provider: NEPacketTunnelProvider) -> SimpleTunnelError? {
 
-        guard let serverAddress:String = provider.protocolConfiguration.serverAddress else {
+        guard let serverAddress: String = provider.protocolConfiguration.serverAddress
+        else
+        {
 			return .badConfiguration
 		}
 
-		let endpoint: NWEndpoint
+        let frontURL = URL(string: "https://www.google.com")
+        guard let serverURL = URL(string: "https://\(serverAddress)/")
+            else
+        {
+            return .badConfiguration
+        }
 
-		if let colonRange = serverAddress.rangeOfCharacter(from: CharacterSet(charactersIn: ":"), options: [], range: nil) {
-			// The server is specified in the configuration as <host>:<port>.
-            
-            let hostname = String(serverAddress[..<colonRange.lowerBound])
-			let portString = String(serverAddress[colonRange.lowerBound...])
+		// Kick off the connection to the server
+        guard let meekConnection = createMeekTCPConnection(provider: provider, to: frontURL!, serverURL: serverURL)
+        else
+        {
+            return .badConfiguration
+        }
 
-			guard !hostname.isEmpty && !portString.isEmpty else {
-				return .badConfiguration
-			}
-
-			endpoint = NWHostEndpoint(hostname:hostname, port:portString)
-		}
-		else {
-			// The server is specified in the configuration as a Bonjour service name.
-			endpoint = NWBonjourServiceEndpoint(name: serverAddress, type:Tunnel.serviceType, domain:Tunnel.serviceDomain)
-		}
-
-		// Kick off the connection to the server.
-		connection = provider.createTCPConnection(to: endpoint, enableTLS:false, tlsParameters:nil, delegate:nil)
-
+        connection = meekConnection
+        
 		// Register for notificationes when the connection status changes.
-		connection!.addObserver(self, forKeyPath: "state", options: .initial, context: &connection)
+        connection!.observeState
+        {
+            (connectionState, maybeError) in
+            
+            // Handle connection state callback
+            self.didChange(connectionState: connectionState, maybeError: maybeError)
+            
+            //connection!.addObserver(self, forKeyPath: "state", options: .initial, context: &connection)
+        }
 
 		return nil
 	}
@@ -85,7 +91,9 @@ open class ClientTunnel: Tunnel {
 
 	/// Read a SimpleTunnel packet from the tunnel connection.
 	func readNextPacket() {
-		guard let targetConnection = connection else {
+		guard let targetConnection = connection
+        else
+        {
 			closeTunnelWithError(SimpleTunnelError.badConnection )
 			return
 		}
@@ -153,15 +161,19 @@ open class ClientTunnel: Tunnel {
 	// MARK: NSObject
 
 	/// Handle changes to the tunnel connection state.
-	open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-		guard keyPath == "state" && context?.assumingMemoryBound(to: Optional<NWTCPConnection>.self).pointee == connection else {
-			super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-			return
-		}
+    func didChange(connectionState: NWTCPConnectionState, maybeError: Error?)
+    {
+//        guard keyPath == "state" && context?.assumingMemoryBound(to: Optional<MeekTCPConnection>.self).pointee == connection
+//        else
+//        {
+//            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+//            return
+//        }
 
 		simpleTunnelLog("Tunnel connection state changed to \(connection!.state)")
 
-		switch connection!.state {
+		switch connection!.state
+        {
 			case .connected:
 				if let remoteAddress = self.connection!.remoteAddress as? NWHostEndpoint {
 					remoteHost = remoteAddress.hostname
@@ -177,7 +189,7 @@ open class ClientTunnel: Tunnel {
 				closeTunnelWithError(connection!.error)
 
 			case .cancelled:
-				connection!.removeObserver(self, forKeyPath:"state", context:&connection)
+                //TODO: connection!.removeObserver(self, forKeyPath:"state", context:&connection)
 				connection = nil
 				delegate?.tunnelDidClose(self)
 
@@ -209,10 +221,12 @@ open class ClientTunnel: Tunnel {
 	}
 
 	/// Handle a message received from the tunnel server.
-	override func handleMessage(_ commandType: TunnelCommand, properties: [String: AnyObject], connection: Connection?) -> Bool {
+	override func handleMessage(_ commandType: TunnelCommand, properties: [String: AnyObject], connection: Connection?) -> Bool
+    {
 		var success = true
 
-		switch commandType {
+		switch commandType
+        {
 			case .openResult:
 				// A logical connection was opened successfully.
 				guard let targetConnection = connection,
@@ -220,6 +234,7 @@ open class ClientTunnel: Tunnel {
 					let resultCode = TunnelConnectionOpenResult(rawValue: resultCodeNumber)
 					else
 				{
+                    simpleTunnelLog("Tunnel received an invalid command")
 					success = false
 					break
 				}
@@ -228,7 +243,12 @@ open class ClientTunnel: Tunnel {
 
 			case .fetchConfiguration:
 				guard let configuration = properties[TunnelMessageKey.Configuration.rawValue] as? [String: AnyObject]
-					else { break }
+					else
+                {
+                        simpleTunnelLog("Tunnel received an invalid command")
+                        break
+                        
+                }
 
 				delegate?.tunnelDidSendConfiguration(self, configuration: configuration)
 			

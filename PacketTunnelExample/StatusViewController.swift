@@ -46,7 +46,8 @@ class StatusViewController: UITableViewController {
 	// MARK: UIViewController
 
 	/// Handle the event where the view is being displayed.
-	override func viewWillAppear(_ animated: Bool) {
+	override func viewWillAppear(_ animated: Bool)
+    {
 		super.viewWillAppear(animated)
 
 		// Initialize the UI
@@ -56,8 +57,11 @@ class StatusViewController: UITableViewController {
 		navigationItem.title = targetManager.localizedDescription
 
 		// Register to be notified of changes in the status.
-		NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object: targetManager.connection, queue: OperationQueue.main, using: { notification in
-			self.statusLabel.text = self.targetManager.connection.status.description
+		NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object: targetManager.connection, queue: OperationQueue.main, using:
+        {
+            notification in
+			
+            self.statusLabel.text = self.targetManager.connection.status.description
 			self.startStopToggle.isOn = (self.targetManager.connection.status != .disconnected && self.targetManager.connection.status != .disconnecting && self.targetManager.connection.status != .invalid)
 		})
 
@@ -70,11 +74,17 @@ class StatusViewController: UITableViewController {
 			, targetManager.connection.status != .invalid
 		{
 			do {
-				try session.sendProviderMessage(message) { response in
-					if response != nil {
-                        let responseString: String = NSString(data: response!, encoding: String.Encoding.utf8.rawValue) as String!
+				try session.sendProviderMessage(message)
+                {
+                    response in
+					
+                    if response != nil
+                    {
+                        let responseString: String = NSString(data: response!, encoding: String.Encoding.utf8.rawValue)! as String
 						simpleTunnelLog("Received response from the provider: \(responseString)")
-					} else {
+					}
+                    else
+                    {
 						simpleTunnelLog("Got a nil response from the provider")
 					}
 				}

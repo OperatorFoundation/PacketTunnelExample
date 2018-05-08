@@ -55,7 +55,7 @@ class ConnectionRuleAddEditController: ConfigurationParametersViewController {
 			domainsCell,
 			requiredDNSCell,
 			requiredURLProbeCell
-		].flatMap { $0 }
+		].compactMap { $0 }
 
 		requiredURLProbeCell.valueChanged = {
 			if let enteredText = self.requiredURLProbeCell.textField.text {
@@ -100,7 +100,7 @@ class ConnectionRuleAddEditController: ConfigurationParametersViewController {
 				guard let enumController = segue.destination as? EnumPickerController else { break }
 
 				let enumValues: [NEEvaluateConnectionRuleAction] = [ .connectIfNeeded, .neverConnect, ],
-					stringValues = enumValues.flatMap { $0.description },
+					stringValues = enumValues.compactMap { $0.description },
 					currentSelection = enumValues.index { $0 == targetRule.action }
 
 				enumController.setValues(stringValues, title: "Action", currentSelection: currentSelection) { newRow in

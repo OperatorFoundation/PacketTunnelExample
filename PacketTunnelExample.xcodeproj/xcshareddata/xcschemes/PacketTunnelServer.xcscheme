@@ -68,7 +68,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/brandon/PacketTunnelExample/PacketTunnelServer/config.plist"
+            argument = "/Users/Lita/Documents/Dev/PacketTunnelExample/PacketTunnelServer/config.plist"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

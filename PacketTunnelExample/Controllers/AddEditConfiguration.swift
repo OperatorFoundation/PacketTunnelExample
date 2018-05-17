@@ -9,7 +9,6 @@
 import UIKit
 import NetworkExtension
 import Security
-import PacketTunnelServices
 
 /// A view controller object for a table view containing input fields used to specify configuration parameters for a VPN configuration.
 class AddEditConfiguration: ConfigurationParametersViewController {
@@ -177,7 +176,7 @@ class AddEditConfiguration: ConfigurationParametersViewController {
 		}
 		targetManager.saveToPreferences { error in
 			if let saveError = error {
-				simpleTunnelLog("Failed to save the configuration: \(saveError)")
+				NSLog("Failed to save the configuration: \(saveError)")
 				return
 			}
 
@@ -191,7 +190,8 @@ class AddEditConfiguration: ConfigurationParametersViewController {
 		guard let passwordData = password.data(using: String.Encoding.utf8, allowLossyConversion: false) else { return nil }
 		var status = errSecSuccess
 
-		if let persistentReference = inKeychainItem {
+		if let persistentReference = inKeychainItem
+        {
 			// A persistent reference was given, update the corresponding keychain item.
 			let query: [NSObject: AnyObject] = [
 				kSecValuePersistentRef : persistentReference as AnyObject,
@@ -248,7 +248,7 @@ class AddEditConfiguration: ConfigurationParametersViewController {
 
 		let status = SecItemDelete(query as CFDictionary)
 		if status != errSecSuccess {
-			simpleTunnelLog("Failed to delete a password: \(status)")
+			NSLog("Failed to delete a password: \(status)")
 		}
 	}
 

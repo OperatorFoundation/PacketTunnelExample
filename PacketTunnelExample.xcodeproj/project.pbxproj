@@ -13,7 +13,6 @@
 		2C3A08F51F979E900033433F /* ClientTunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D61F979D870033433F /* ClientTunnel.swift */; };
 		2C3A08F61F979E900033433F /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D71F979D870033433F /* util.swift */; };
 		2C3A08F71F979E900033433F /* Tunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D81F979D870033433F /* Tunnel.swift */; };
-		2C3A08F81F979EBF0033433F /* SimpleTunnelServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C3A08D41F979D870033433F /* SimpleTunnelServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C3A08FA1F97A0A90033433F /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D31F979D870033433F /* Connection.swift */; };
 		2C3A08FD1F97A0A90033433F /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D71F979D870033433F /* util.swift */; };
 		2C3A08FE1F97A0A90033433F /* Tunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D81F979D870033433F /* Tunnel.swift */; };
@@ -28,10 +27,11 @@
 		2CA9A89A1F9692E400A2AB4E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A87D1F9691A800A2AB4E /* main.swift */; };
 		460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E6F521F96563900F011B8 /* NetworkExtension.framework */; };
 		463DF2DE209A1C490066813D /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E6F521F96563900F011B8 /* NetworkExtension.framework */; };
-		46E9404A20A0D886009C342A /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
-		46E9404B20A0D88B009C342A /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
-		46E9404C20A0D9CB009C342A /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
-		46E9404D20A0D9D0009C342A /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
+		4683189920AB4C5400CFBBBD /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
+		4683189A20AB4C6700CFBBBD /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
+		468C2D2B20AB439100C16F5C /* SimpleTunnelServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C3A08D41F979D870033433F /* SimpleTunnelServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
+		469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
 		46E9404E20A0DA4A009C342A /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
 		46E9404F20A0DA4A009C342A /* Transport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46E9405220A0DA73009C342A /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
@@ -107,6 +107,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = "Transport::Transport::Product";
 			remoteInfo = Transport;
+		};
+		46986E2B20ADFC10003EC8BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "SwiftQueue::SwiftQueue::Product";
+			remoteInfo = SwiftQueue;
 		};
 		46B4B2DC1F99304F00DF5CAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -241,8 +248,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46E9404B20A0D88B009C342A /* Meek.framework in Frameworks */,
-				46E9404A20A0D886009C342A /* Transport.framework in Frameworks */,
+				4683189A20AB4C6700CFBBBD /* Transport.framework in Frameworks */,
+				4683189920AB4C5400CFBBBD /* Meek.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,8 +276,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46E9404D20A0D9D0009C342A /* Transport.framework in Frameworks */,
-				46E9404C20A0D9CB009C342A /* Meek.framework in Frameworks */,
+				469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */,
+				469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */,
 				463DF2DE209A1C490066813D /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,12 +288,11 @@
 		2C3A08D21F979D870033433F /* PacketTunnelServices */ = {
 			isa = PBXGroup;
 			children = (
-				463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */,
 				2C3A08D31F979D870033433F /* Connection.swift */,
-				2C3A08D41F979D870033433F /* SimpleTunnelServices.h */,
 				2C3A08D61F979D870033433F /* ClientTunnel.swift */,
 				2C3A08D71F979D870033433F /* util.swift */,
 				2C3A08D81F979D870033433F /* Tunnel.swift */,
+				2C3A08D41F979D870033433F /* SimpleTunnelServices.h */,
 				2C3A08D91F979D870033433F /* LICENSE.txt */,
 			);
 			path = PacketTunnelServices;
@@ -314,6 +320,7 @@
 		460E6F331F9655DF00F011B8 = {
 			isa = PBXGroup;
 			children = (
+				463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */,
 				4E78C34E1F97AE9200C9B616 /* PacketTunnelExample */,
 				4E78C2CA1F97A92D00C9B616 /* PacketTunnelExtension */,
 				4E78C2C51F97A87D00C9B616 /* README.md */,
@@ -350,17 +357,58 @@
 				463DF2DB209A188B0066813D /* Meek.framework */,
 				463DF2BD209A10370066813D /* PacketTunnelExampleDependencies.framework */,
 				463DF2BF209A10370066813D /* PacketTunnelExampleDependenciesTests.xctest */,
+				46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */,
 				463DF2DD209A188B0066813D /* Transport.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		468318C720ADF47100CFBBBD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4E78C3611F97AE9200C9B616 /* StatusViewController.swift */,
+				4E78C34F1F97AE9200C9B616 /* AddEditConfiguration.swift */,
+				4E78C3521F97AE9200C9B616 /* ConfigurationListController.swift */,
+				4E78C35F1F97AE9200C9B616 /* ProxyServerAddEditController.swift */,
+				4E78C3601F97AE9200C9B616 /* ProxySettingsController.swift */,
+				4E78C35E1F97AE9200C9B616 /* ProxyAutoConfigScriptController.swift */,
+				4E78C35C1F97AE9200C9B616 /* OnDemandRuleAddEditController.swift */,
+				4E78C3541F97AE9200C9B616 /* ConnectionRuleAddEditController.swift */,
+				4E78C3551F97AE9200C9B616 /* ConnectionRuleListController.swift */,
+				4E78C35D1F97AE9200C9B616 /* OnDemandRuleListController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		468318CF20ADF47D00CFBBBD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4E78C3581F97AE9200C9B616 /* Images.xcassets */,
+				4E78C3591F97AE9200C9B616 /* LaunchScreen.xib */,
+				4E78C35B1F97AE9200C9B616 /* Main.storyboard */,
+				4E78C3571F97AE9200C9B616 /* EnumPickerController.swift */,
+				4E78C3531F97AE9200C9B616 /* ConfigurationParametersViewController.swift */,
+				4E78C35A1F97AE9200C9B616 /* ListViewController.swift */,
+				4E78C3661F97AE9200C9B616 /* SwitchCell.swift */,
+				4E78C3671F97AE9200C9B616 /* TextFieldCell.swift */,
+				4E78C3621F97AE9200C9B616 /* StringListController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		468318D020ADF48F00CFBBBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4E78C2CA1F97A92D00C9B616 /* PacketTunnelExtension */ = {
 			isa = PBXGroup;
 			children = (
 				4E78C37F1F97B47200C9B616 /* PacketTunnelProvider.swift */,
-				4E78C3031F97A96100C9B616 /* Supporting Files */,
 				4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */,
+				4E78C3031F97A96100C9B616 /* Supporting Files */,
 			);
 			path = PacketTunnelExtension;
 			sourceTree = "<group>";
@@ -377,27 +425,11 @@
 		4E78C34E1F97AE9200C9B616 /* PacketTunnelExample */ = {
 			isa = PBXGroup;
 			children = (
-				4E78C3591F97AE9200C9B616 /* LaunchScreen.xib */,
-				4E78C35B1F97AE9200C9B616 /* Main.storyboard */,
-				4E78C34F1F97AE9200C9B616 /* AddEditConfiguration.swift */,
 				4E78C3501F97AE9200C9B616 /* AppDelegate.swift */,
-				4E78C3521F97AE9200C9B616 /* ConfigurationListController.swift */,
-				4E78C3531F97AE9200C9B616 /* ConfigurationParametersViewController.swift */,
-				4E78C3541F97AE9200C9B616 /* ConnectionRuleAddEditController.swift */,
-				4E78C3551F97AE9200C9B616 /* ConnectionRuleListController.swift */,
-				4E78C3571F97AE9200C9B616 /* EnumPickerController.swift */,
-				4E78C3581F97AE9200C9B616 /* Images.xcassets */,
-				4E78C35A1F97AE9200C9B616 /* ListViewController.swift */,
-				4E78C35C1F97AE9200C9B616 /* OnDemandRuleAddEditController.swift */,
-				4E78C35D1F97AE9200C9B616 /* OnDemandRuleListController.swift */,
-				4E78C35E1F97AE9200C9B616 /* ProxyAutoConfigScriptController.swift */,
-				4E78C35F1F97AE9200C9B616 /* ProxyServerAddEditController.swift */,
-				4E78C3601F97AE9200C9B616 /* ProxySettingsController.swift */,
-				4E78C3611F97AE9200C9B616 /* StatusViewController.swift */,
-				4E78C3621F97AE9200C9B616 /* StringListController.swift */,
+				468318D020ADF48F00CFBBBD /* Model */,
+				468318CF20ADF47D00CFBBBD /* Views */,
+				468318C720ADF47100CFBBBD /* Controllers */,
 				4E78C3631F97AE9200C9B616 /* Supporting Files */,
-				4E78C3661F97AE9200C9B616 /* SwitchCell.swift */,
-				4E78C3671F97AE9200C9B616 /* TextFieldCell.swift */,
 			);
 			path = PacketTunnelExample;
 			sourceTree = "<group>";
@@ -418,7 +450,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C3A08F81F979EBF0033433F /* SimpleTunnelServices.h in Headers */,
+				468C2D2B20AB439100C16F5C /* SimpleTunnelServices.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +640,13 @@
 			fileType = wrapper.framework;
 			path = Transport.framework;
 			remoteRef = 463DF2DC209A188B0066813D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftQueue.framework;
+			remoteRef = 46986E2B20ADFC10003EC8BE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

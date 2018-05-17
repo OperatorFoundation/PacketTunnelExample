@@ -89,17 +89,22 @@ class ClientTunnelConnection: Connection {
 	// MARK: Connection
 
 	/// Handle the event of the connection being established.
-	override func handleOpenCompleted(_ resultCode: TunnelConnectionOpenResult, properties: [NSObject: AnyObject]) {
-		guard resultCode == .success else {
+	override func handleOpenCompleted(_ resultCode: TunnelConnectionOpenResult, properties: [NSObject: AnyObject])
+    {
+		guard resultCode == .success
+        else
+        {
 			delegate.tunnelConnectionDidClose(self, error: SimpleTunnelError.badConnection)
 			return
 		}
 
 		// Pass the tunnel network settings to the delegate.
-		if let configuration = properties[TunnelMessageKey.Configuration.rawValue as NSString] as? [NSObject: AnyObject] {
+		if let configuration = properties[TunnelMessageKey.Configuration.rawValue as NSString] as? [NSObject: AnyObject]
+        {
 			delegate.tunnelConnectionDidOpen(self, configuration: configuration)
 		}
-		else {
+		else
+        {
 			delegate.tunnelConnectionDidOpen(self, configuration: [:])
 		}
 	}

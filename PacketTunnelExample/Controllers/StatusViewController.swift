@@ -8,14 +8,16 @@
 
 import UIKit
 import NetworkExtension
-import PacketTunnelServices
 
 // MARK: Extensions
 
 /// Make NEVPNStatus convertible to a string
-extension NEVPNStatus: CustomStringConvertible {
-    public var description: String {
-        switch self {
+extension NEVPNStatus: CustomStringConvertible
+{
+    public var description: String
+    {
+        switch self
+        {
         	case .disconnected: return "Disconnected"
         	case .invalid: return "Invalid"
         	case .connected: return "Connected"
@@ -27,10 +29,8 @@ extension NEVPNStatus: CustomStringConvertible {
 }
 
 /// A view controller object for a view that displays VPN status information and allows the user to start and stop the VPN.
-class StatusViewController: UITableViewController {
-
-	// MARK: Properties
-
+class StatusViewController: UITableViewController
+{
 	/// A switch that toggles the enabled state of the VPN configuration.
 	@IBOutlet weak var enabledSwitch: UISwitch!
 
@@ -42,6 +42,8 @@ class StatusViewController: UITableViewController {
 
 	/// The target VPN configuration.
 	var targetManager = NEVPNManager.shared()
+    
+    var loggingEnabled = false
 
 	// MARK: UIViewController
 
@@ -61,19 +63,21 @@ class StatusViewController: UITableViewController {
         {
             notification in
 			
+            print("⁉️ View controller notified of change in status: \(self.targetManager.connection.status.description)")
             self.statusLabel.text = self.targetManager.connection.status.description
 			self.startStopToggle.isOn = (self.targetManager.connection.status != .disconnected && self.targetManager.connection.status != .disconnecting && self.targetManager.connection.status != .invalid)
 		})
 
 		// Disable the start/stop toggle if the configuration is not enabled.
 		startStopToggle.isEnabled = enabledSwitch.isOn
-
+        
 		// Send a simple IPC message to the provider, handle the response.
 		if let session = targetManager.connection as? NETunnelProviderSession,
 			let message = "Hello Provider".data(using: String.Encoding.utf8)
 			, targetManager.connection.status != .invalid
 		{
-			do {
+			do
+            {
 				try session.sendProviderMessage(message)
                 {
                     response in
@@ -81,21 +85,34 @@ class StatusViewController: UITableViewController {
                     if response != nil
                     {
                         let responseString: String = NSString(data: response!, encoding: String.Encoding.utf8.rawValue)! as String
-						simpleTunnelLog("Received response from the provider: \(responseString)")
+						NSLog("Received response from the provider: \(responseString)")
 					}
                     else
                     {
-						simpleTunnelLog("Got a nil response from the provider")
+						NSLog("Got a nil response from the provider")
 					}
 				}
-			} catch {
-				simpleTunnelLog("Failed to send a message to the provider")
+			}
+            catch
+            {
+				NSLog("Failed to send a message to the provider")
 			}
 		}
 	}
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: .meekConnectionState, object: nil, queue: nil)
+        { (stateNotification) in
+            print("RECEIVED A MEEK CONNECTION STATE NOTIFICATION")
+        }
+    }
 
 	/// Handle the event where the view is being hidden.
-	override func viewWillDisappear(_ animated: Bool) {
+	override func viewWillDisappear(_ animated: Bool)
+    {
 		super.viewWillDisappear(animated)
 
 		// Stop watching for status change notifications.
@@ -103,10 +120,16 @@ class StatusViewController: UITableViewController {
 	}
 
 	/// Handle the user toggling the "enabled" switch.
-	@IBAction func enabledToggled(_ sender: AnyObject) {
+	@IBAction func enabledToggled(_ sender: AnyObject)
+    {
 		targetManager.isEnabled = enabledSwitch.isOn
-		targetManager.saveToPreferences { error in
-			guard error == nil else {
+		targetManager.saveToPreferences
+        {
+            error in
+            
+			guard error == nil
+            else
+            {
 				self.enabledSwitch.isOn = self.targetManager.isEnabled
 				self.startStopToggle.isEnabled = self.enabledSwitch.isOn
 				return
@@ -120,17 +143,102 @@ class StatusViewController: UITableViewController {
 	}
 
 	/// Handle the user toggling the "VPN" switch.
-	@IBAction func startStopToggled(_ sender: AnyObject) {
-		if targetManager.connection.status == .disconnected || targetManager.connection.status == .invalid {
-			do {
+	@IBAction func startStopToggled(_ sender: AnyObject)
+    {
+		if targetManager.connection.status == .disconnected || targetManager.connection.status == .invalid
+        {
+            startLoggingLoop()
+			do
+            {
 				try targetManager.connection.startVPNTunnel()
 			}
-			catch {
-				simpleTunnelLog("Failed to start the VPN: \(error)")
+			catch
+            {
+				NSLog("Failed to start the VPN: \(error)")
 			}
 		}
-		else {
+		else
+        {
+            stopLoggingLoop()
 			targetManager.connection.stopVPNTunnel()
 		}
 	}
+    
+    @objc func startLoggingLoop()
+    {
+        loggingEnabled = true
+        
+        // Send a simple IPC message to the provider, handle the response.        
+        guard let session = targetManager.connection as? NETunnelProviderSession
+            else
+        {
+            print("\nUnable to begin logging, no session was found.")
+            return
+        }
+        
+        guard targetManager.connection.status != .invalid
+        else
+        {
+            print("\nInvalid connection status")
+            return
+        }
+        
+        DispatchQueue.global(qos: .background).async
+        {
+            var currentStatus = "Unknown"
+            while self.loggingEnabled
+            {
+                sleep(1)
+                
+                if self.targetManager.connection.status.description != currentStatus
+                {
+                    currentStatus = self.targetManager.connection.status.description
+                    print("Current Status Changed: \(currentStatus)")
+                }
+                
+                guard let message = "Hello Provider".data(using: String.Encoding.utf8)
+                    else
+                {
+                    continue
+                }
+                
+                do
+                {
+                    try session.sendProviderMessage(message)
+                    {
+                        response in
+                        
+                        if response != nil
+                        {
+                            let responseString: String = NSString(data: response!, encoding: String.Encoding.utf8.rawValue)! as String
+                            if responseString != ""
+                            {
+                                print(responseString)
+                            }
+                        }
+                        else
+                        {
+                            NSLog("Got a nil response from the provider")
+                        }
+                    }
+                }
+                catch
+                {
+                    NSLog("Failed to send a message to the provider")
+                }
+                
+                DispatchQueue.main.async
+                {
+                    // Stub
+                }
+            }
+        }
+    }
+    
+    func stopLoggingLoop()
+    {
+        loggingEnabled = false
+    }
+    
+    
 }

@@ -29,7 +29,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 	// MARK: NEPacketTunnelProvider
 
 	/// Begin the process of establishing the tunnel.
-	override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+	override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void)
+    {
         /*
         let ipv4Settings = NEIPv4Settings(addresses: ["192.168.2.1"], subnetMasks: ["255.255.255.0"])
         // 这里RemoteAddress可任意填写。
@@ -62,10 +63,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
         let newTunnel = ClientTunnel()
         newTunnel.delegate = self
         
-        if let error = newTunnel.startTunnel(self) {
+        if let error = newTunnel.startTunnel(self)
+        {
             completionHandler(error)
         }
-        else {
+        else
+        {
             // Save the completion handler for when the tunnel is fully established.
             pendingStartCompletion = completionHandler
             tunnel = newTunnel
@@ -73,7 +76,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 	}
 
 	/// Begin the process of stopping the tunnel.
-	override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
+	override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void)
+    {
 		// Clear out any pending start completion handler.
 		pendingStartCompletion = nil
 
@@ -83,22 +87,44 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 	}
 
 	/// Handle IPC messages from the app.
-	override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
-		guard let messageString = NSString(data: messageData, encoding: String.Encoding.utf8.rawValue) else {
+	override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?)
+    {
+		guard let messageString = NSString(data: messageData, encoding: String.Encoding.utf8.rawValue)
+        else
+        {
 			completionHandler?(nil)
 			return
 		}
+        
+        var responseString = "Nothing to see here!"
 
+        if let tunnel = tunnel
+        {
+            if let logMessage = tunnel.logQueue.dequeue()
+            {
+                responseString = "\n*******\(logMessage)*******\n"
+            }
+            else
+            {
+                responseString = ""
+            }
+        }
+        else
+        {
+            responseString = ""
+        }
+        
 		simpleTunnelLog("Got a message from the app: \(messageString)")
 
-		let responseData = "Hello app".data(using: String.Encoding.utf8)
+		let responseData = responseString.data(using: String.Encoding.utf8)
 		completionHandler?(responseData)
 	}
 
 	// MARK: TunnelDelegate
 
 	/// Handle the event of the tunnel connection being established.
-	func tunnelDidOpen(_ targetTunnel: Tunnel) {
+	func tunnelDidOpen(_ targetTunnel: Tunnel)
+    {
 		// Open the logical flow of packets through the tunnel.
 		let newConnection = ClientTunnelConnection(tunnel: targetTunnel as! ClientTunnel, clientPacketFlow: packetFlow, connectionDelegate: self)
 		newConnection.open()
@@ -131,27 +157,36 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 	// MARK: ClientTunnelConnectionDelegate
 
 	/// Handle the event of the logical flow of packets being established through the tunnel.
-	func tunnelConnectionDidOpen(_ connection: ClientTunnelConnection, configuration: [NSObject: AnyObject]) {
-
+	func tunnelConnectionDidOpen(_ connection: ClientTunnelConnection, configuration: [NSObject: AnyObject])
+    {
+        tunnel?.logQueue.enqueue("\n🚀 tunnelConnectionDidOpen  🚀\n")
 		// Create the virtual interface settings.
-		guard let settings = createTunnelSettingsFromConfiguration(configuration) else {
+		guard let settings = createTunnelSettingsFromConfiguration(configuration)
+        else
+        {
 			pendingStartCompletion?(SimpleTunnelError.internalError)
 			pendingStartCompletion = nil
 			return
 		}
 
 		// Set the virtual interface settings.
-		setTunnelNetworkSettings(settings) { error in
-			var startError: Error?
-			if let error = error {
+		setTunnelNetworkSettings(settings)
+        {
+            error in
+			
+            var startError: Error?
+			if let error = error
+            {
 				simpleTunnelLog("Failed to set the tunnel network settings: \(error)")
 				startError = SimpleTunnelError.badConfiguration
 			}
-			else {
+			else
+            {
 				// Now we can start reading and writing packets to/from the virtual interface.
 				self.tunnelConnection?.startHandlingPackets()
 			}
 
+            //TODO: This causes the status to be changed to connected
 			// Now the tunnel is fully established, call the start completion handler.
 			self.pendingStartCompletion?(startError)
 			self.pendingStartCompletion = nil

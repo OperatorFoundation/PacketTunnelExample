@@ -8,7 +8,6 @@
 
 import UIKit
 import NetworkExtension
-import PacketTunnelServices
 
 /// The view controller object for the list of packet tunnel configurations.
 class ConfigurationListController: ListViewController {
@@ -154,7 +153,7 @@ class ConfigurationListController: ListViewController {
 		managers[index].removeFromPreferences {
 			error in
 			if let error = error {
-				simpleTunnelLog("Failed to remove manager: \(error)")
+				NSLog("Failed to remove manager: \(error)")
 			}
 		}
 		managers.remove(at: index)

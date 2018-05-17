@@ -7,9 +7,11 @@
 */
 
 import Foundation
+import NetworkExtension
 
 /// Command types in the SimpleTunnel protocol
-public enum TunnelCommand: Int, CustomStringConvertible {
+public enum TunnelCommand: Int, CustomStringConvertible
+{
 	case data = 1
 	case suspend = 2
 	case resume = 3
@@ -20,8 +22,10 @@ public enum TunnelCommand: Int, CustomStringConvertible {
 	case packets = 8
 	case fetchConfiguration = 9
 
-	public var description: String {
-		switch self {
+	public var description: String
+    {
+		switch self
+        {
 			case .data: return "Data"
 			case .suspend: return "Suspend"
 			case .resume: return "Resume"
@@ -36,7 +40,8 @@ public enum TunnelCommand: Int, CustomStringConvertible {
 }
 
 /// Keys in SimpleTunnel message dictionaries.
-public enum TunnelMessageKey: String {
+public enum TunnelMessageKey: String
+{
 	case Identifier = "identifier"
 	case Command = "command"
 	case Data = "data"
@@ -54,26 +59,30 @@ public enum TunnelMessageKey: String {
 }
 
 /// The layer at which the tunnel tunnels traffic.
-public enum TunnelLayer: Int {
+public enum TunnelLayer: Int
+{
 	case app = 0
 	case ip = 1
 }
 
 /// For App Layer tunnel, the type of socket being tunneled.
-public enum AppProxyFlowKind: Int {
+public enum AppProxyFlowKind: Int
+{
     case tcp = 1
     case udp = 3
 }
 
 /// The tunnel delegate protocol.
-public protocol TunnelDelegate: class {
+public protocol TunnelDelegate: class
+{
 	func tunnelDidOpen(_ targetTunnel: Tunnel)
 	func tunnelDidClose(_ targetTunnel: Tunnel)
 	func tunnelDidSendConfiguration(_ targetTunnel: Tunnel, configuration: [String: AnyObject])
 }
 
 /// The base class that implements common behavior and data structure for both sides of the SimpleTunnel protocol.
-open class Tunnel: NSObject {
+open class Tunnel: NSObject
+{
 
 	// MARK: Properties
 
@@ -274,13 +283,15 @@ open class Tunnel: NSObject {
 				TunnelMessageKey.Protocols.rawValue: protocols as AnyObject
 			])
 
-		if !sendMessage(properties) {
+		if !sendMessage(properties)
+        {
 			simpleTunnelLog("Failed to send a packet message")
 		}
 	}
 
 	/// Process a message payload.
-	func handlePacket(_ packetData: Data) -> Bool {
+	func handlePacket(_ packetData: Data) -> Bool
+    {
 		let properties: [String: AnyObject]
 		do {
 			properties = try PropertyListSerialization.propertyList(from: packetData, options: PropertyListSerialization.MutabilityOptions(), format: nil) as! [String: AnyObject]
@@ -290,11 +301,16 @@ open class Tunnel: NSObject {
 			return false
 		}
 
-		guard let command = properties[TunnelMessageKey.Command.rawValue] as? Int else {
+		guard let command = properties[TunnelMessageKey.Command.rawValue] as? Int
+        else
+        {
 			simpleTunnelLog("Message command type is missing")
 			return false
 		}
-		guard let commandType = TunnelCommand(rawValue: command) else {
+        
+		guard let commandType = TunnelCommand(rawValue: command)
+        else
+        {
 			simpleTunnelLog("Message command type \(command) is invalid")
 			return false
 		}
@@ -306,13 +322,17 @@ open class Tunnel: NSObject {
 			connection = connections[connectionIdentifierNumber]
 		}
 
-		guard let targetConnection = connection else {
+		guard let targetConnection = connection
+        else
+        {
 			return handleMessage(commandType, properties: properties, connection: connection)
 		}
 
-		switch commandType {
+		switch commandType
+        {
 			case .data:
-				guard let data = properties[TunnelMessageKey.Data.rawValue] as? Data else { break }
+				guard let data = properties[TunnelMessageKey.Data.rawValue] as? Data
+                else { break }
 
 				/* check if the message has properties for host and port */
 				if let host = properties[TunnelMessageKey.Host.rawValue] as? String,
@@ -322,7 +342,8 @@ open class Tunnel: NSObject {
 					/* UDP case : send peer's address along with data */
 					targetConnection.sendDataWithEndPoint(data, host: host, port: port)
 				}
-				else {
+				else
+                {
 					targetConnection.sendData(data)
 				}
 
@@ -338,7 +359,9 @@ open class Tunnel: NSObject {
 				{
                     simpleTunnelLog("\(String(describing: connection?.identifier)): closing \(closeDirection)")
 					targetConnection.closeConnection(closeDirection)
-				} else {
+				}
+                else
+                {
                     simpleTunnelLog("\(String(describing: connection?.identifier)): closing reads and writes")
 					targetConnection.closeConnection(.all)
 				}

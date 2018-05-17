@@ -7,11 +7,12 @@ let package = Package(
     name: "PacketTunnelExampleDependencies",
     dependencies: [
         .package(url: "https://github.com/OperatorFoundation/Shapeshifter-Swift-Transports.git", from: "0.1.0"),
+        .package(url: "https://github.com/OperatorFoundation/SwiftQueue.git", from: "0.0.1")
         ],
     targets: [
         .target(
             name: "PacketTunnelExampleDependencies",
-            dependencies: ["Meek"]),
+            dependencies: ["Meek", "SwiftQueue"]),
         .testTarget(
             name: "PacketTunnelExampleDependenciesTests",
             dependencies: ["PacketTunnelExampleDependencies", "Meek"]),

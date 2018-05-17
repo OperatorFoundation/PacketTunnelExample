@@ -7,15 +7,24 @@
 */
 
 import NetworkExtension
-import PacketTunnelServices
+import SwiftQueue
+import Transport
+
+/*
+ TODO:
+    - Set remote host
+    - Set lastError
+    - Implement didChange(connectionState: connectionState, maybeError: maybeError)
+ */
 
 /// A packet tunnel provider object.
-class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnelConnectionDelegate {
-
-	// MARK: Properties
-
+class PacketTunnelProvider: NEPacketTunnelProvider, ClientTunnelConnectionDelegate
+{
 	/// A reference to the tunnel object.
-	var tunnel: ClientTunnel?
+	//var tunnel: ClientTunnel?
+    
+    /// The tunnel connection.
+    open var connection: TCPConnection?
 
 	/// The single logical flow of packets through the tunnel.
 	var tunnelConnection: ClientTunnelConnection?
@@ -25,66 +34,119 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 
 	/// The completion handler to call when the tunnel is fully disconnected.
 	var pendingStopCompletion: (() -> Void)?
+    
+    /// The last error that occurred on the tunnel.
+    var lastError: Error?
+    
+    /// A Queue of Log Messages
+    var logQueue = Queue<String>()
+    
+    /// The address of the tunnel server.
+    open var remoteHost: String?
+    
+    
 
 	// MARK: NEPacketTunnelProvider
 
-	/// Begin the process of establishing the tunnel.
+	/// Start the TCP connection to the tunnel server.
 	override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void)
     {
-        /*
-        let ipv4Settings = NEIPv4Settings(addresses: ["192.168.2.1"], subnetMasks: ["255.255.255.0"])
-        // 这里RemoteAddress可任意填写。
-        let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "8.8.8.8")
-        networkSettings.mtu = 1500
-        networkSettings.iPv4Settings = ipv4Settings
-        setTunnelNetworkSettings(networkSettings) {
-            error in
-            guard error == nil else {
-                NSLog(error.debugDescription)
-                completionHandler(error)
-                return
-            }
-            
-            let newTunnel = ClientTunnel()
-            newTunnel.delegate = self
-            
-            if let error = newTunnel.startTunnel(self) {
-                completionHandler(error)
-            }
-            else {
-                // Save the completion handler for when the tunnel is fully established.
-                self.pendingStartCompletion = completionHandler
-                self.tunnel = newTunnel
-            }
-            
-            completionHandler(nil)
-        }
-        */
-        let newTunnel = ClientTunnel()
-        newTunnel.delegate = self
+        self.logQueue.enqueue("startTunnel called")
         
-        if let error = newTunnel.startTunnel(self)
+        guard let serverAddress: String = self.protocolConfiguration.serverAddress
+            else
         {
-            completionHandler(error)
+            logQueue.enqueue("Unable to resolve server address.")
+            completionHandler(SimpleTunnelError.badConfiguration)
+            return
         }
-        else
+        
+        self.logQueue.enqueue("Server address: \(serverAddress)")
+        
+        let frontURL = URL(string: "https://www.google.com")
+        guard let serverURL = URL(string: "https://\(serverAddress)/")
+            else
         {
-            // Save the completion handler for when the tunnel is fully established.
-            pendingStartCompletion = completionHandler
-            tunnel = newTunnel
+            logQueue.enqueue("Unable to resolve front url.")
+            completionHandler(SimpleTunnelError.badConfiguration)
+            return
         }
-	}
+        
+        // Kick off the connection to the server
+        logQueue.enqueue("Kicking off the connections to the server.")
+        //        guard let meekConnection = createMeekTCPConnection(provider: provider, to: frontURL!, serverURL: serverURL)
+        //        else
+        //        {
+        //            logQueue.enqueue("Unable to establish Meek TCP connection.")
+        //            return .badConfiguration
+        //        }
+        //
+        //        connection = meekConnection
+        //        logQueue.enqueue("MeekTCPConnection created.")
+        
+        let endpoint = NWHostEndpoint(hostname: serverAddress, port: "80")
+        guard let tcpConnection: TCPConnection = self.createTCPConnectionThroughTunnel(to: endpoint, enableTLS: false, tlsParameters: nil, delegate: nil)
+            else
+        {
+            logQueue.enqueue("Unable to establish TCP connection.")
+            completionHandler(SimpleTunnelError.badConfiguration)
+            return
+        }
+        
+        connection = tcpConnection
+        logQueue.enqueue("TCPConnection created")
+        
+        // Register for notificationes when the connection status changes.
+        logQueue.enqueue("Registering for connection status change notifications.")
+        
+        connection!.observeState
+        {
+            (connectionState, maybeError) in
+            
+            // Handle connection state callback
+            self.logQueue.enqueue("Connection state callback: \(connectionState), \(String(describing: maybeError))")
+            
+            /// FIX ME
+            // self.didChange(connectionState: connectionState, maybeError: maybeError)
+            
+            //connection!.addObserver(self, forKeyPath: "state", options: .initial, context: &connection)
+        }
+
+        // Save the completion handler for when the tunnel is fully established.
+        pendingStartCompletion = completionHandler
+    }
 
 	/// Begin the process of stopping the tunnel.
 	override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void)
     {
+        logQueue.enqueue("closeTunnel Called")
+        
 		// Clear out any pending start completion handler.
-		pendingStartCompletion = nil
+        pendingStartCompletion?(SimpleTunnelError.internalError)
+        pendingStartCompletion = nil
 
-		// Save the completion handler for when the tunnel is fully disconnected.
-		pendingStopCompletion = completionHandler
-		tunnel?.closeTunnel()
+        // Close the tunnel connection.
+        if let TCPConnection = connection
+        {
+            TCPConnection.cancel()
+        }
+        
+        pendingStopCompletion?()
 	}
+    
+    /// Close the tunnel.
+    open func closeTunnelWithError(_ error: Error?)
+    {
+        logQueue.enqueue("Closing the tunnel with error: \(String(describing: error))")
+        lastError = error
+        pendingStartCompletion?(error)
+       
+        // Close the tunnel connection.
+        if let TCPConnection = connection
+        {
+            TCPConnection.cancel()
+        }
+    }
 
 	/// Handle IPC messages from the app.
 	override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?)
@@ -98,23 +160,16 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
         
         var responseString = "Nothing to see here!"
 
-        if let tunnel = tunnel
+        if let logMessage = self.logQueue.dequeue()
         {
-            if let logMessage = tunnel.logQueue.dequeue()
-            {
-                responseString = "\n*******\(logMessage)*******\n"
-            }
-            else
-            {
-                responseString = ""
-            }
+            responseString = "\n*******\(logMessage)*******\n"
         }
         else
         {
             responseString = ""
         }
         
-		simpleTunnelLog("Got a message from the app: \(messageString)")
+        logQueue.enqueue("Got a message from the app: \(messageString)")
 
 		let responseData = responseString.data(using: String.Encoding.utf8)
 		completionHandler?(responseData)
@@ -123,35 +178,34 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 	// MARK: TunnelDelegate
 
 	/// Handle the event of the tunnel connection being established.
-	func tunnelDidOpen(_ targetTunnel: Tunnel)
+	func tunnelDidOpen()
     {
 		// Open the logical flow of packets through the tunnel.
-		let newConnection = ClientTunnelConnection(tunnel: targetTunnel as! ClientTunnel, clientPacketFlow: packetFlow, connectionDelegate: self)
+		let newConnection = ClientTunnelConnection(clientPacketFlow: packetFlow, connectionDelegate: self)
 		newConnection.open()
 		tunnelConnection = newConnection
 	}
 
 	/// Handle the event of the tunnel connection being closed.
-	func tunnelDidClose(_ targetTunnel: Tunnel) {
-		if pendingStartCompletion != nil {
+	func tunnelDidClose()
+    {
+		if pendingStartCompletion != nil
+        {
 			// Closed while starting, call the start completion handler with the appropriate error.
-			pendingStartCompletion?(tunnel?.lastError)
+			pendingStartCompletion?(lastError)
 			pendingStartCompletion = nil
 		}
-		else if pendingStopCompletion != nil {
+		else if pendingStopCompletion != nil
+        {
 			// Closed as the result of a call to stopTunnelWithReason, call the stop completion handler.
             pendingStopCompletion?()
 			pendingStopCompletion = nil
 		}
-		else {
+		else
+        {
 			// Closed as the result of an error on the tunnel connection, cancel the tunnel.
-			cancelTunnelWithError(tunnel?.lastError)
+			cancelTunnelWithError(lastError)
 		}
-		tunnel = nil
-	}
-
-	/// Handle the server sending a configuration.
-	func tunnelDidSendConfiguration(_ targetTunnel: Tunnel, configuration: [String : AnyObject]) {
 	}
 
 	// MARK: ClientTunnelConnectionDelegate
@@ -159,7 +213,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 	/// Handle the event of the logical flow of packets being established through the tunnel.
 	func tunnelConnectionDidOpen(_ connection: ClientTunnelConnection, configuration: [NSObject: AnyObject])
     {
-        tunnel?.logQueue.enqueue("\n🚀 tunnelConnectionDidOpen  🚀\n")
+        logQueue.enqueue("\n🚀 tunnelConnectionDidOpen  🚀\n")
 		// Create the virtual interface settings.
 		guard let settings = createTunnelSettingsFromConfiguration(configuration)
         else
@@ -177,7 +231,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
             var startError: Error?
 			if let error = error
             {
-				simpleTunnelLog("Failed to set the tunnel network settings: \(error)")
+                self.logQueue.enqueue("Failed to set the tunnel network settings: \(error)")
 				startError = SimpleTunnelError.badConfiguration
 			}
 			else
@@ -194,52 +248,25 @@ class PacketTunnelProvider: NEPacketTunnelProvider, TunnelDelegate, ClientTunnel
 	}
 
 	/// Handle the event of the logical flow of packets being torn down.
-	func tunnelConnectionDidClose(_ connection: ClientTunnelConnection, error: Error?) {
+	func tunnelConnectionDidClose(_ connection: ClientTunnelConnection, error: Error?)
+    {
 		tunnelConnection = nil
-		tunnel?.closeTunnelWithError(error)
+		closeTunnelWithError(error)
 	}
 
 	/// Create the tunnel network settings to be applied to the virtual interface.
-	func createTunnelSettingsFromConfiguration(_ configuration: [NSObject: AnyObject]) -> NEPacketTunnelNetworkSettings? {
-		guard let tunnelAddress = tunnel?.remoteHost,
-			let address = getValueFromPlist(configuration, keyArray: [.IPv4, .Address]) as? String,
-			let netmask = getValueFromPlist(configuration, keyArray: [.IPv4, .Netmask]) as? String
-			else { return nil }
+	func createTunnelSettingsFromConfiguration(_ configuration: [NSObject: AnyObject]) -> NEPacketTunnelNetworkSettings?
+    {
+        let address = "192.168.2.1"
+        let netmask = "255.255.255.0"
+        
+		guard let tunnelAddress = remoteHost
+        else { return nil }
 
 		let newSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: tunnelAddress)
-		var fullTunnel = true
-
         newSettings.ipv4Settings = NEIPv4Settings(addresses: [address], subnetMasks: [netmask])
-
-		if let routes = getValueFromPlist(configuration, keyArray: [.IPv4, .Routes]) as? [[String: AnyObject]] {
-			var includedRoutes = [NEIPv4Route]()
-			for route in routes {
-				if let netAddress = route[SettingsKey.Address.rawValue] as? String,
-					let netMask = route[SettingsKey.Netmask.rawValue] as? String
-				{
-					includedRoutes.append(NEIPv4Route(destinationAddress: netAddress, subnetMask: netMask))
-				}
-			}
-            newSettings.ipv4Settings?.includedRoutes = includedRoutes
-			fullTunnel = false
-		}
-		else {
-			// No routes specified, use the default route.
-            newSettings.ipv4Settings?.includedRoutes = [NEIPv4Route.default()]
-		}
-
-		if let DNSDictionary = configuration[SettingsKey.DNS.rawValue as NSString] as? [String: AnyObject],
-			let DNSServers = DNSDictionary[SettingsKey.Servers.rawValue] as? [String]
-		{
-			newSettings.dnsSettings = NEDNSSettings(servers: DNSServers)
-			if let DNSSearchDomains = DNSDictionary[SettingsKey.SearchDomains.rawValue] as? [String] {
-				newSettings.dnsSettings?.searchDomains = DNSSearchDomains
-				if !fullTunnel {
-					newSettings.dnsSettings?.matchDomains = DNSSearchDomains
-				}
-			}
-		}
-
+        newSettings.ipv4Settings?.includedRoutes = [NEIPv4Route.default()]
+        newSettings.dnsSettings = NEDNSSettings(servers: ["8.8.8.8"])
 		newSettings.tunnelOverheadBytes = 150
 
 		return newSettings

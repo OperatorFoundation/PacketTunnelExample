@@ -37,10 +37,8 @@ public enum TunnelConnectionOpenResult: Int {
 }
 
 /// A logical connection (or flow) of network data in the SimpleTunnel protocol.
-open class Connection: NSObject {
-
-	// MARK: Properties
-
+open class Connection: NSObject
+{
 	/// The connection identifier.
 	open let identifier: Int
 

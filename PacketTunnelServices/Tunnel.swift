@@ -72,18 +72,9 @@ public enum AppProxyFlowKind: Int
     case udp = 3
 }
 
-/// The tunnel delegate protocol.
-public protocol TunnelDelegate: class
-{
-	func tunnelDidOpen(_ targetTunnel: Tunnel)
-	func tunnelDidClose(_ targetTunnel: Tunnel)
-	func tunnelDidSendConfiguration(_ targetTunnel: Tunnel, configuration: [String: AnyObject])
-}
-
 /// The base class that implements common behavior and data structure for both sides of the SimpleTunnel protocol.
 open class Tunnel: NSObject
 {
-
 	// MARK: Properties
 
 	/// The tunnel delegate.

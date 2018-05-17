@@ -12,23 +12,6 @@ import Meek
 import Transport
 import SwiftQueue
 
-/// Make NEVPNStatus convertible to a string
-extension NWTCPConnectionState: CustomStringConvertible
-{
-	public var description: String
-    {
-		switch self
-        {
-			case .cancelled: return "Cancelled"
-			case .connected: return "Connected"
-			case .connecting: return "Connecting"
-			case .disconnected: return "Disconnected"
-			case .invalid: return "Invalid"
-			case .waiting: return "Waiting"
-		}
-	}
-}
-
 /// The client-side implementation of the SimpleTunnel protocol.
 open class ClientTunnel: Tunnel
 {

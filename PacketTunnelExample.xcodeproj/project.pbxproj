@@ -30,6 +30,11 @@
 		4683189920AB4C5400CFBBBD /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
 		4683189A20AB4C6700CFBBBD /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
 		468C2D2B20AB439100C16F5C /* SimpleTunnelServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C3A08D41F979D870033433F /* SimpleTunnelServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		46986E2E20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E2D20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift */; };
+		46986E3120AE024A003EC8BE /* ClientTunnelConnectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E2D20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift */; };
+		46986E3320AE02E5003EC8BE /* TunnelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */; };
+		46986E3420AE02EE003EC8BE /* TunnelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */; };
+		46986E3B20AE1078003EC8BE /* SimpleTunnelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3A20AE1078003EC8BE /* SimpleTunnelError.swift */; };
 		469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
 		469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
 		46E9404E20A0DA4A009C342A /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
@@ -213,6 +218,10 @@
 		460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacketTunnelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		460E6F521F96563900F011B8 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PacketTunnelExampleDependencies.xcodeproj; path = PacketTunnelExampleDependencies/PacketTunnelExampleDependencies.xcodeproj; sourceTree = SOURCE_ROOT; };
+		46986E2D20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTunnelConnectionDelegate.swift; sourceTree = "<group>"; };
+		46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelDelegate.swift; sourceTree = "<group>"; };
+		46986E3720AE0A7E003EC8BE /* NWTCPConnection+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NWTCPConnection+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		46986E3A20AE1078003EC8BE /* SimpleTunnelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTunnelError.swift; sourceTree = "<group>"; };
 		4E78C2C51F97A87D00C9B616 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../SimpleTunnel/README.md; sourceTree = "<group>"; };
 		4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTunnelConnection.swift; sourceTree = "<group>"; };
 		4E78C3051F97A96D00C9B616 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -292,6 +301,7 @@
 				2C3A08D61F979D870033433F /* ClientTunnel.swift */,
 				2C3A08D71F979D870033433F /* util.swift */,
 				2C3A08D81F979D870033433F /* Tunnel.swift */,
+				46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */,
 				2C3A08D41F979D870033433F /* SimpleTunnelServices.h */,
 				2C3A08D91F979D870033433F /* LICENSE.txt */,
 			);
@@ -304,12 +314,12 @@
 				2CA9A8721F9691A800A2AB4E /* AddressPool.swift */,
 				2CA9A8731F9691A800A2AB4E /* ServerConfiguration.swift */,
 				2CA9A8741F9691A800A2AB4E /* ServerConnection.swift */,
-				2CA9A8751F9691A800A2AB4E /* tunnel_server-Bridging-Header.h */,
 				2CA9A8761F9691A800A2AB4E /* ServerTunnel.swift */,
-				2CA9A8771F9691A800A2AB4E /* ServerUtils.m */,
 				2CA9A8781F9691A800A2AB4E /* ServerTunnelConnection.swift */,
 				2CA9A8791F9691A800A2AB4E /* UDPServerConnection.swift */,
 				2CA9A87A1F9691A800A2AB4E /* ServerUtils.h */,
+				2CA9A8771F9691A800A2AB4E /* ServerUtils.m */,
+				2CA9A8751F9691A800A2AB4E /* tunnel_server-Bridging-Header.h */,
 				2CA9A87B1F9691A800A2AB4E /* config.plist */,
 				2CA9A87C1F9691A800A2AB4E /* LICENSE.txt */,
 				2CA9A87D1F9691A800A2AB4E /* main.swift */,
@@ -406,9 +416,10 @@
 		4E78C2CA1F97A92D00C9B616 /* PacketTunnelExtension */ = {
 			isa = PBXGroup;
 			children = (
+				4E78C3031F97A96100C9B616 /* Supporting Files */,
 				4E78C37F1F97B47200C9B616 /* PacketTunnelProvider.swift */,
 				4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */,
-				4E78C3031F97A96100C9B616 /* Supporting Files */,
+				46986E2D20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift */,
 			);
 			path = PacketTunnelExtension;
 			sourceTree = "<group>";
@@ -418,6 +429,8 @@
 			children = (
 				4E78C3871F97CA5E00C9B616 /* PacketTunnelExtension.entitlements */,
 				4E78C3051F97A96D00C9B616 /* Info.plist */,
+				46986E3720AE0A7E003EC8BE /* NWTCPConnection+CustomStringConvertible.swift */,
+				46986E3A20AE1078003EC8BE /* SimpleTunnelError.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -685,6 +698,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46986E3320AE02E5003EC8BE /* TunnelDelegate.swift in Sources */,
 				2C3A08F71F979E900033433F /* Tunnel.swift in Sources */,
 				2C3A08F51F979E900033433F /* ClientTunnel.swift in Sources */,
 				2C3A08F21F979E900033433F /* Connection.swift in Sources */,
@@ -700,6 +714,7 @@
 				2C3A08FA1F97A0A90033433F /* Connection.swift in Sources */,
 				2C3A08FD1F97A0A90033433F /* util.swift in Sources */,
 				2CA9A8951F9692A500A2AB4E /* ServerConnection.swift in Sources */,
+				46986E3420AE02EE003EC8BE /* TunnelDelegate.swift in Sources */,
 				2CA9A89A1F9692E400A2AB4E /* main.swift in Sources */,
 				2CA9A8981F9692C500A2AB4E /* ServerTunnelConnection.swift in Sources */,
 				2CA9A8971F9692B300A2AB4E /* ServerUtils.m in Sources */,
@@ -719,6 +734,7 @@
 				4E78C3761F97AE9300C9B616 /* OnDemandRuleListController.swift in Sources */,
 				4E78C3751F97AE9300C9B616 /* OnDemandRuleAddEditController.swift in Sources */,
 				4E78C3731F97AE9300C9B616 /* ListViewController.swift in Sources */,
+				46986E3120AE024A003EC8BE /* ClientTunnelConnectionDelegate.swift in Sources */,
 				4E78C37E1F97AE9300C9B616 /* TextFieldCell.swift in Sources */,
 				4E78C36C1F97AE9200C9B616 /* ConfigurationParametersViewController.swift in Sources */,
 				4E78C36D1F97AE9200C9B616 /* ConnectionRuleAddEditController.swift in Sources */,
@@ -739,6 +755,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46986E3B20AE1078003EC8BE /* SimpleTunnelError.swift in Sources */,
+				46986E2E20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift in Sources */,
 				4E78C3841F97B63800C9B616 /* ClientTunnelConnection.swift in Sources */,
 				4E78C3801F97B47200C9B616 /* PacketTunnelProvider.swift in Sources */,
 			);

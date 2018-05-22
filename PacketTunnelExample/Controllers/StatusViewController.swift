@@ -104,10 +104,10 @@ class StatusViewController: UITableViewController
     {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(forName: .meekConnectionState, object: nil, queue: nil)
-        { (stateNotification) in
-            print("RECEIVED A MEEK CONNECTION STATE NOTIFICATION")
-        }
+//        NotificationCenter.default.addObserver(forName: .meekConnectionState, object: nil, queue: nil)
+//        { (stateNotification) in
+//            print("RECEIVED A MEEK CONNECTION STATE NOTIFICATION")
+//        }
     }
 
 	/// Handle the event where the view is being hidden.

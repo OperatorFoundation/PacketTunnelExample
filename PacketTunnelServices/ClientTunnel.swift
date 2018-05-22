@@ -85,7 +85,6 @@ open class ClientTunnel: Tunnel
             
             // Handle connection state callback
             self.logQueue.enqueue("Connection state callback: \(connectionState), \(String(describing: maybeError))")
-            self.didChange(connectionState: connectionState, maybeError: maybeError)
             
             //connection!.addObserver(self, forKeyPath: "state", options: .initial, context: &connection)
         }
@@ -190,44 +189,7 @@ open class ClientTunnel: Tunnel
 
 	// MARK: NSObject
 
-	/// Handle changes to the tunnel connection state.
-    func didChange(connectionState: NWTCPConnectionState, maybeError: Error?)
-    {
-//        guard keyPath == "state" && context?.assumingMemoryBound(to: Optional<MeekTCPConnection>.self).pointee == connection
-//        else
-//        {
-//            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-//            return
-//        }
 
-        self.logQueue.enqueue(">>Tunnel connection state changed to \(connection!.state)<<")
-
-		switch connection!.state
-        {
-			case .connected:
-				if let remoteAddress = self.connection!.remoteAddress as? NWHostEndpoint
-                {
-					remoteHost = remoteAddress.hostname
-				}
-
-				// Start reading messages from the tunnel connection.
-				readNextPacket()
-
-				// Let the delegate know that the tunnel is open
-				delegate?.tunnelDidOpen(self)
-
-			case .disconnected:
-				closeTunnelWithError(connection!.error)
-
-			case .cancelled:
-                //TODO: connection!.removeObserver(self, forKeyPath:"state", context:&connection)
-				connection = nil
-				delegate?.tunnelDidClose(self)
-
-			default:
-				break
-		}
-	}
 
 	// MARK: Tunnel
 

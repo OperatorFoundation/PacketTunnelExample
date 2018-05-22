@@ -106,8 +106,39 @@ class PacketTunnelProvider: NEPacketTunnelProvider, ClientTunnelConnectionDelega
             // Handle connection state callback
             self.logQueue.enqueue("Connection state callback: \(connectionState), \(String(describing: maybeError))")
             
-            /// FIX ME
-            // self.didChange(connectionState: connectionState, maybeError: maybeError)
+            self.logQueue.enqueue(">>Tunnel connection state changed to \(self.connection!.state)<<")
+            
+            switch self.connection!.state
+            {
+            case .connected:
+                if let remoteAddress = self.connection!.remoteAddress as? NWHostEndpoint
+                {
+                    self.remoteHost = remoteAddress.hostname
+                }
+                
+                // Start reading messages from the tunnel connection.
+                self.tunnelConnection?.startHandlingPackets()
+                
+                // Open the logical flow of packets through the tunnel.
+                let newConnection = ClientTunnelConnection(clientPacketFlow: self.packetFlow, connectionDelegate: self)
+                newConnection.open()
+                self.tunnelConnection = newConnection
+                completionHandler(nil)
+                
+            case .disconnected:
+                self.closeTunnelWithError(self.connection!.error)
+                completionHandler(SimpleTunnelError.disconnected)
+                
+            case .cancelled:
+                //TODO: connection!.removeObserver(self, forKeyPath:"state", context:&connection)
+                self.connection = nil
+                self.tunnelDidClose()
+                completionHandler(SimpleTunnelError.cancelled)
+                
+            default:
+                completionHandler(SimpleTunnelError.badConnection)
+                break
+            }
             
             //connection!.addObserver(self, forKeyPath: "state", options: .initial, context: &connection)
         }
@@ -176,15 +207,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider, ClientTunnelConnectionDelega
 	}
 
 	// MARK: TunnelDelegate
-
-	/// Handle the event of the tunnel connection being established.
-	func tunnelDidOpen()
-    {
-		// Open the logical flow of packets through the tunnel.
-		let newConnection = ClientTunnelConnection(clientPacketFlow: packetFlow, connectionDelegate: self)
-		newConnection.open()
-		tunnelConnection = newConnection
-	}
 
 	/// Handle the event of the tunnel connection being closed.
 	func tunnelDidClose()

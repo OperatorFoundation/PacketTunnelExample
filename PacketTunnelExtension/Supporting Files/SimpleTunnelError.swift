@@ -12,5 +12,7 @@ public enum SimpleTunnelError: Error
 {
     case badConfiguration
     case badConnection
+    case cancelled
+    case disconnected
     case internalError
 }

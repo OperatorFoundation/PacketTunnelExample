@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C3A08EC1F979E590033433F /* PacketTunnelServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; };
-		2C3A08ED1F979E590033433F /* PacketTunnelServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2C3A08F21F979E900033433F /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D31F979D870033433F /* Connection.swift */; };
 		2C3A08F51F979E900033433F /* ClientTunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D61F979D870033433F /* ClientTunnel.swift */; };
 		2C3A08F61F979E900033433F /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D71F979D870033433F /* util.swift */; };
@@ -35,6 +33,8 @@
 		46986E3320AE02E5003EC8BE /* TunnelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */; };
 		46986E3420AE02EE003EC8BE /* TunnelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */; };
 		46986E3B20AE1078003EC8BE /* SimpleTunnelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3A20AE1078003EC8BE /* SimpleTunnelError.swift */; };
+		46986E4720AE30B3003EC8BE /* PacketTunnelServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; };
+		46986E4820AE30B3003EC8BE /* PacketTunnelServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
 		469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
 		46E9404E20A0DA4A009C342A /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
@@ -43,6 +43,9 @@
 		46E9405320A0DA73009C342A /* Meek.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46E9405620A0DAA3009C342A /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2D9209A188B0066813D /* CryptoSwift.framework */; };
 		46E9405720A0DAA3009C342A /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2D9209A188B0066813D /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46FC9FFA20AE324C000A2919 /* PacketTunnelServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; };
+		46FCA00E20B36EE7000A2919 /* SwiftQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */; };
+		46FCA00F20B36EE7000A2919 /* SwiftQueue.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E78C2CF1F97A93C00C9B616 /* ClientTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */; };
 		4E78C3061F97A96D00C9B616 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E78C3051F97A96D00C9B616 /* Info.plist */; };
 		4E78C34A1F97ACDB00C9B616 /* PacketTunnelExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E78C3421F97ACDB00C9B616 /* PacketTunnelExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -71,13 +74,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C3A08EA1F979E590033433F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C3A08E41F979E590033433F;
-			remoteInfo = ivan.PacketTunnelServices;
-		};
 		463DF2BC209A10370066813D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
@@ -120,6 +116,13 @@
 			remoteGlobalIDString = "SwiftQueue::SwiftQueue::Product";
 			remoteInfo = SwiftQueue;
 		};
+		46986E4920AE30B3003EC8BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C3A08E41F979E590033433F;
+			remoteInfo = PacketTunnelServices;
+		};
 		46B4B2DC1F99304F00DF5CAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
@@ -148,6 +151,13 @@
 			remoteGlobalIDString = "CryptoSwift::CryptoSwift";
 			remoteInfo = CryptoSwift;
 		};
+		46FCA01020B36EE7000A2919 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = "SwiftQueue::SwiftQueue";
+			remoteInfo = SwiftQueue;
+		};
 		4E78C3481F97ACDB00C9B616 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
@@ -164,10 +174,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				46986E4820AE30B3003EC8BE /* PacketTunnelServices.framework in Embed Frameworks */,
 				46E9404F20A0DA4A009C342A /* Transport.framework in Embed Frameworks */,
-				2C3A08ED1F979E590033433F /* PacketTunnelServices.framework in Embed Frameworks */,
 				46E9405320A0DA73009C342A /* Meek.framework in Embed Frameworks */,
 				46E9405720A0DAA3009C342A /* CryptoSwift.framework in Embed Frameworks */,
+				46FCA00F20B36EE7000A2919 /* SwiftQueue.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,9 +286,10 @@
 			files = (
 				46E9405220A0DA73009C342A /* Meek.framework in Frameworks */,
 				46E9404E20A0DA4A009C342A /* Transport.framework in Frameworks */,
-				2C3A08EC1F979E590033433F /* PacketTunnelServices.framework in Frameworks */,
 				46E9405620A0DAA3009C342A /* CryptoSwift.framework in Frameworks */,
 				460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */,
+				46FCA00E20B36EE7000A2919 /* SwiftQueue.framework in Frameworks */,
+				46986E4720AE30B3003EC8BE /* PacketTunnelServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +297,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46FC9FFA20AE324C000A2919 /* PacketTunnelServices.framework in Frameworks */,
 				469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */,
 				469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */,
 				463DF2DE209A1C490066813D /* NetworkExtension.framework in Frameworks */,
@@ -518,11 +531,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				2C3A08EB1F979E590033433F /* PBXTargetDependency */,
 				4E78C3491F97ACDB00C9B616 /* PBXTargetDependency */,
 				46E9405120A0DA4A009C342A /* PBXTargetDependency */,
 				46E9405520A0DA73009C342A /* PBXTargetDependency */,
 				46E9405920A0DAA3009C342A /* PBXTargetDependency */,
+				46986E4A20AE30B3003EC8BE /* PBXTargetDependency */,
+				46FCA01120B36EE7000A2919 /* PBXTargetDependency */,
 			);
 			name = PacketTunnelExample;
 			productName = PacketTunnelExample;
@@ -765,10 +779,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2C3A08EB1F979E590033433F /* PBXTargetDependency */ = {
+		46986E4A20AE30B3003EC8BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2C3A08E41F979E590033433F /* PacketTunnelServices */;
-			targetProxy = 2C3A08EA1F979E590033433F /* PBXContainerItemProxy */;
+			targetProxy = 46986E4920AE30B3003EC8BE /* PBXContainerItemProxy */;
 		};
 		46B4B2DD1F99304F00DF5CAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -790,6 +804,11 @@
 			name = CryptoSwift;
 			targetProxy = 46E9405820A0DAA3009C342A /* PBXContainerItemProxy */;
 		};
+		46FCA01120B36EE7000A2919 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftQueue;
+			targetProxy = 46FCA01020B36EE7000A2919 /* PBXContainerItemProxy */;
+		};
 		4E78C3491F97ACDB00C9B616 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4E78C3411F97ACDB00C9B616 /* PacketTunnelExtension */;
@@ -802,7 +821,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -828,7 +847,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

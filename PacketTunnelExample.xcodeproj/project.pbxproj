@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C3A08F21F979E900033433F /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D31F979D870033433F /* Connection.swift */; };
-		2C3A08F51F979E900033433F /* ClientTunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D61F979D870033433F /* ClientTunnel.swift */; };
-		2C3A08F61F979E900033433F /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D71F979D870033433F /* util.swift */; };
-		2C3A08F71F979E900033433F /* Tunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D81F979D870033433F /* Tunnel.swift */; };
-		2C3A08FA1F97A0A90033433F /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D31F979D870033433F /* Connection.swift */; };
-		2C3A08FD1F97A0A90033433F /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D71F979D870033433F /* util.swift */; };
-		2C3A08FE1F97A0A90033433F /* Tunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A08D81F979D870033433F /* Tunnel.swift */; };
 		2CA9A8851F9691A900A2AB4E /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CA9A87B1F9691A800A2AB4E /* config.plist */; };
 		2CA9A8931F9692A100A2AB4E /* AddressPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8721F9691A800A2AB4E /* AddressPool.swift */; };
 		2CA9A8941F9692A500A2AB4E /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A8731F9691A800A2AB4E /* ServerConfiguration.swift */; };
@@ -25,16 +18,7 @@
 		2CA9A89A1F9692E400A2AB4E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9A87D1F9691A800A2AB4E /* main.swift */; };
 		460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E6F521F96563900F011B8 /* NetworkExtension.framework */; };
 		463DF2DE209A1C490066813D /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E6F521F96563900F011B8 /* NetworkExtension.framework */; };
-		4683189920AB4C5400CFBBBD /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
-		4683189A20AB4C6700CFBBBD /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
-		468C2D2B20AB439100C16F5C /* SimpleTunnelServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C3A08D41F979D870033433F /* SimpleTunnelServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		46986E2E20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E2D20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift */; };
-		46986E3120AE024A003EC8BE /* ClientTunnelConnectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E2D20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift */; };
-		46986E3320AE02E5003EC8BE /* TunnelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */; };
-		46986E3420AE02EE003EC8BE /* TunnelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */; };
 		46986E3B20AE1078003EC8BE /* SimpleTunnelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3A20AE1078003EC8BE /* SimpleTunnelError.swift */; };
-		46986E4720AE30B3003EC8BE /* PacketTunnelServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; };
-		46986E4820AE30B3003EC8BE /* PacketTunnelServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
 		469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
 		46E9404E20A0DA4A009C342A /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
@@ -43,7 +27,6 @@
 		46E9405320A0DA73009C342A /* Meek.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46E9405620A0DAA3009C342A /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2D9209A188B0066813D /* CryptoSwift.framework */; };
 		46E9405720A0DAA3009C342A /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2D9209A188B0066813D /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		46FC9FFA20AE324C000A2919 /* PacketTunnelServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */; };
 		46FCA00E20B36EE7000A2919 /* SwiftQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */; };
 		46FCA00F20B36EE7000A2919 /* SwiftQueue.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E78C2CF1F97A93C00C9B616 /* ClientTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */; };
@@ -116,20 +99,6 @@
 			remoteGlobalIDString = "SwiftQueue::SwiftQueue::Product";
 			remoteInfo = SwiftQueue;
 		};
-		46986E4920AE30B3003EC8BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C3A08E41F979E590033433F;
-			remoteInfo = PacketTunnelServices;
-		};
-		46B4B2DC1F99304F00DF5CAB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 460E6F341F9655DF00F011B8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C3A08E41F979E590033433F;
-			remoteInfo = PacketTunnelServices;
-		};
 		46E9405020A0DA4A009C342A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
@@ -174,7 +143,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				46986E4820AE30B3003EC8BE /* PacketTunnelServices.framework in Embed Frameworks */,
 				46E9404F20A0DA4A009C342A /* Transport.framework in Embed Frameworks */,
 				46E9405320A0DA73009C342A /* Meek.framework in Embed Frameworks */,
 				46E9405720A0DAA3009C342A /* CryptoSwift.framework in Embed Frameworks */,
@@ -206,13 +174,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C3A08D31F979D870033433F /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		2C3A08D41F979D870033433F /* SimpleTunnelServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTunnelServices.h; sourceTree = "<group>"; };
-		2C3A08D61F979D870033433F /* ClientTunnel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTunnel.swift; sourceTree = "<group>"; };
-		2C3A08D71F979D870033433F /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
-		2C3A08D81F979D870033433F /* Tunnel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tunnel.swift; sourceTree = "<group>"; };
-		2C3A08D91F979D870033433F /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		2C3A08E51F979E590033433F /* PacketTunnelServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PacketTunnelServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA9A8721F9691A800A2AB4E /* AddressPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPool.swift; sourceTree = "<group>"; };
 		2CA9A8731F9691A800A2AB4E /* ServerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
 		2CA9A8741F9691A800A2AB4E /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
@@ -229,8 +190,6 @@
 		460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacketTunnelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		460E6F521F96563900F011B8 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PacketTunnelExampleDependencies.xcodeproj; path = PacketTunnelExampleDependencies/PacketTunnelExampleDependencies.xcodeproj; sourceTree = SOURCE_ROOT; };
-		46986E2D20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTunnelConnectionDelegate.swift; sourceTree = "<group>"; };
-		46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelDelegate.swift; sourceTree = "<group>"; };
 		46986E3720AE0A7E003EC8BE /* NWTCPConnection+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NWTCPConnection+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		46986E3A20AE1078003EC8BE /* SimpleTunnelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTunnelError.swift; sourceTree = "<group>"; };
 		4E78C2C51F97A87D00C9B616 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../SimpleTunnel/README.md; sourceTree = "<group>"; };
@@ -264,15 +223,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2C3A08E11F979E590033433F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4683189A20AB4C6700CFBBBD /* Transport.framework in Frameworks */,
-				4683189920AB4C5400CFBBBD /* Meek.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2CA9A8891F96926A00A2AB4E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,7 +239,6 @@
 				46E9405620A0DAA3009C342A /* CryptoSwift.framework in Frameworks */,
 				460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */,
 				46FCA00E20B36EE7000A2919 /* SwiftQueue.framework in Frameworks */,
-				46986E4720AE30B3003EC8BE /* PacketTunnelServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +246,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46FC9FFA20AE324C000A2919 /* PacketTunnelServices.framework in Frameworks */,
 				469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */,
 				469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */,
 				463DF2DE209A1C490066813D /* NetworkExtension.framework in Frameworks */,
@@ -307,20 +255,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C3A08D21F979D870033433F /* PacketTunnelServices */ = {
-			isa = PBXGroup;
-			children = (
-				2C3A08D31F979D870033433F /* Connection.swift */,
-				2C3A08D61F979D870033433F /* ClientTunnel.swift */,
-				2C3A08D71F979D870033433F /* util.swift */,
-				2C3A08D81F979D870033433F /* Tunnel.swift */,
-				46986E3220AE02E5003EC8BE /* TunnelDelegate.swift */,
-				2C3A08D41F979D870033433F /* SimpleTunnelServices.h */,
-				2C3A08D91F979D870033433F /* LICENSE.txt */,
-			);
-			path = PacketTunnelServices;
-			sourceTree = "<group>";
-		};
 		2CA9A8711F9691A800A2AB4E /* PacketTunnelServer */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,7 +281,6 @@
 				4E78C34E1F97AE9200C9B616 /* PacketTunnelExample */,
 				4E78C2CA1F97A92D00C9B616 /* PacketTunnelExtension */,
 				4E78C2C51F97A87D00C9B616 /* README.md */,
-				2C3A08D21F979D870033433F /* PacketTunnelServices */,
 				2CA9A8711F9691A800A2AB4E /* PacketTunnelServer */,
 				460E6F3D1F9655DF00F011B8 /* Products */,
 				460E6F511F96563900F011B8 /* Frameworks */,
@@ -359,7 +292,6 @@
 			children = (
 				460E6F3C1F9655DF00F011B8 /* PacketTunnelExample.app */,
 				2CA9A88C1F96926A00A2AB4E /* PacketTunnelServer */,
-				2C3A08E51F979E590033433F /* PacketTunnelServices.framework */,
 				4E78C3421F97ACDB00C9B616 /* PacketTunnelExtension.appex */,
 			);
 			name = Products;
@@ -432,7 +364,6 @@
 				4E78C3031F97A96100C9B616 /* Supporting Files */,
 				4E78C37F1F97B47200C9B616 /* PacketTunnelProvider.swift */,
 				4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */,
-				46986E2D20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift */,
 			);
 			path = PacketTunnelExtension;
 			sourceTree = "<group>";
@@ -471,36 +402,7 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		2C3A08E21F979E590033433F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				468C2D2B20AB439100C16F5C /* SimpleTunnelServices.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		2C3A08E41F979E590033433F /* PacketTunnelServices */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C3A08EE1F979E590033433F /* Build configuration list for PBXNativeTarget "PacketTunnelServices" */;
-			buildPhases = (
-				2C3A08E01F979E590033433F /* Sources */,
-				2C3A08E11F979E590033433F /* Frameworks */,
-				2C3A08E21F979E590033433F /* Headers */,
-				2C3A08E31F979E590033433F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PacketTunnelServices;
-			productName = ivan.PacketTunnelServices;
-			productReference = 2C3A08E51F979E590033433F /* PacketTunnelServices.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		2CA9A88B1F96926A00A2AB4E /* PacketTunnelServer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CA9A8901F96926A00A2AB4E /* Build configuration list for PBXNativeTarget "PacketTunnelServer" */;
@@ -535,7 +437,6 @@
 				46E9405120A0DA4A009C342A /* PBXTargetDependency */,
 				46E9405520A0DA73009C342A /* PBXTargetDependency */,
 				46E9405920A0DAA3009C342A /* PBXTargetDependency */,
-				46986E4A20AE30B3003EC8BE /* PBXTargetDependency */,
 				46FCA01120B36EE7000A2919 /* PBXTargetDependency */,
 			);
 			name = PacketTunnelExample;
@@ -554,7 +455,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				46B4B2DD1F99304F00DF5CAB /* PBXTargetDependency */,
 			);
 			name = PacketTunnelExtension;
 			productName = PacketTunnel;
@@ -570,10 +470,6 @@
 				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0930;
 				TargetAttributes = {
-					2C3A08E41F979E590033433F = {
-						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
-					};
 					2CA9A88B1F96926A00A2AB4E = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
@@ -627,7 +523,6 @@
 			targets = (
 				460E6F3B1F9655DF00F011B8 /* PacketTunnelExample */,
 				2CA9A88B1F96926A00A2AB4E /* PacketTunnelServer */,
-				2C3A08E41F979E590033433F /* PacketTunnelServices */,
 				4E78C3411F97ACDB00C9B616 /* PacketTunnelExtension */,
 			);
 		};
@@ -679,13 +574,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2C3A08E31F979E590033433F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		460E6F3A1F9655DF00F011B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -708,32 +596,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2C3A08E01F979E590033433F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				46986E3320AE02E5003EC8BE /* TunnelDelegate.swift in Sources */,
-				2C3A08F71F979E900033433F /* Tunnel.swift in Sources */,
-				2C3A08F51F979E900033433F /* ClientTunnel.swift in Sources */,
-				2C3A08F21F979E900033433F /* Connection.swift in Sources */,
-				2C3A08F61F979E900033433F /* util.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2CA9A8881F96926A00A2AB4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2CA9A8931F9692A100A2AB4E /* AddressPool.swift in Sources */,
-				2C3A08FA1F97A0A90033433F /* Connection.swift in Sources */,
-				2C3A08FD1F97A0A90033433F /* util.swift in Sources */,
 				2CA9A8951F9692A500A2AB4E /* ServerConnection.swift in Sources */,
-				46986E3420AE02EE003EC8BE /* TunnelDelegate.swift in Sources */,
 				2CA9A89A1F9692E400A2AB4E /* main.swift in Sources */,
 				2CA9A8981F9692C500A2AB4E /* ServerTunnelConnection.swift in Sources */,
 				2CA9A8971F9692B300A2AB4E /* ServerUtils.m in Sources */,
 				2CA9A8991F9692D700A2AB4E /* UDPServerConnection.swift in Sources */,
-				2C3A08FE1F97A0A90033433F /* Tunnel.swift in Sources */,
 				2CA9A8961F9692B000A2AB4E /* ServerTunnel.swift in Sources */,
 				2CA9A8941F9692A500A2AB4E /* ServerConfiguration.swift in Sources */,
 			);
@@ -748,7 +620,6 @@
 				4E78C3761F97AE9300C9B616 /* OnDemandRuleListController.swift in Sources */,
 				4E78C3751F97AE9300C9B616 /* OnDemandRuleAddEditController.swift in Sources */,
 				4E78C3731F97AE9300C9B616 /* ListViewController.swift in Sources */,
-				46986E3120AE024A003EC8BE /* ClientTunnelConnectionDelegate.swift in Sources */,
 				4E78C37E1F97AE9300C9B616 /* TextFieldCell.swift in Sources */,
 				4E78C36C1F97AE9200C9B616 /* ConfigurationParametersViewController.swift in Sources */,
 				4E78C36D1F97AE9200C9B616 /* ConnectionRuleAddEditController.swift in Sources */,
@@ -770,7 +641,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46986E3B20AE1078003EC8BE /* SimpleTunnelError.swift in Sources */,
-				46986E2E20AE00D9003EC8BE /* ClientTunnelConnectionDelegate.swift in Sources */,
 				4E78C3841F97B63800C9B616 /* ClientTunnelConnection.swift in Sources */,
 				4E78C3801F97B47200C9B616 /* PacketTunnelProvider.swift in Sources */,
 			);
@@ -779,16 +649,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		46986E4A20AE30B3003EC8BE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C3A08E41F979E590033433F /* PacketTunnelServices */;
-			targetProxy = 46986E4920AE30B3003EC8BE /* PBXContainerItemProxy */;
-		};
-		46B4B2DD1F99304F00DF5CAB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C3A08E41F979E590033433F /* PacketTunnelServices */;
-			targetProxy = 46B4B2DC1F99304F00DF5CAB /* PBXContainerItemProxy */;
-		};
 		46E9405120A0DA4A009C342A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Transport;
@@ -817,58 +677,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2C3A08EF1F979E590033433F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PacketTunnelServices/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelServices;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2C3A08F01F979E590033433F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PacketTunnelServices/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelServices;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		2CA9A8911F96926A00A2AB4E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1100,15 +908,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C3A08EE1F979E590033433F /* Build configuration list for PBXNativeTarget "PacketTunnelServices" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C3A08EF1F979E590033433F /* Debug */,
-				2C3A08F01F979E590033433F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2CA9A8901F96926A00A2AB4E /* Build configuration list for PBXNativeTarget "PacketTunnelServer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

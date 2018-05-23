@@ -12,27 +12,17 @@ import NetworkExtension
 /// An object used to tunnel IP packets using the SimpleTunnel protocol.
 public class ClientTunnelConnection
 {
-	/// The connection delegate.
-	let delegate: ClientTunnelConnectionDelegate
-
 	/// The flow of IP packets.
 	let packetFlow: NEPacketTunnelFlow
 
 	// MARK: Initializers
 
-	init(clientPacketFlow: NEPacketTunnelFlow, connectionDelegate: ClientTunnelConnectionDelegate)
+	init(clientPacketFlow: NEPacketTunnelFlow)
     {
-		delegate = connectionDelegate
 		packetFlow = clientPacketFlow
 	}
 
 	// MARK: Interface
-
-	/// Send a "connection open" message to the tunnel server.
-	func open()
-    {
-		delegate.tunnelConnectionDidOpen(self, configuration: [:])
-	}
 
 	/// Handle packets coming from the packet flow.
 	func handlePackets(_ packets: [Data], protocols: [NSNumber])

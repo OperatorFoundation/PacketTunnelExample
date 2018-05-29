@@ -12,7 +12,7 @@ let package = Package(
     targets: [
         .target(
             name: "PacketTunnelExampleDependencies",
-            dependencies: ["Meek", "SwiftQueue"]),
+            dependencies: ["Meek", "SwiftQueue", "ShapeshifterTesting"]),
         .testTarget(
             name: "PacketTunnelExampleDependenciesTests",
             dependencies: ["PacketTunnelExampleDependencies", "Meek"]),

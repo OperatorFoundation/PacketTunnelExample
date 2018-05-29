@@ -8,6 +8,7 @@
 
 import UIKit
 import NetworkExtension
+import ShapeshifterTesting
 
 // MARK: Extensions
 
@@ -52,6 +53,7 @@ class StatusViewController: UITableViewController
     {
 		super.viewWillAppear(animated)
 
+        
 		// Initialize the UI
 		enabledSwitch.isOn = targetManager.isEnabled
 		startStopToggle.isOn = (targetManager.connection.status != .disconnected && targetManager.connection.status != .invalid)
@@ -193,7 +195,7 @@ class StatusViewController: UITableViewController
                 if self.targetManager.connection.status.description != currentStatus
                 {
                     currentStatus = self.targetManager.connection.status.description
-                    print("Current Status Changed: \(currentStatus)")
+                    print("\nCurrent Status Changed: \(currentStatus)\n")
                 }
                 
                 guard let message = "Hello Provider".data(using: String.Encoding.utf8)

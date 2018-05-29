@@ -9,6 +9,8 @@
 import NetworkExtension
 import SwiftQueue
 import Transport
+import ShapeshifterTesting
+import Meek
 
 /*
  TODO:
@@ -16,22 +18,6 @@ import Transport
     - Set lastError
     - Implement didChange(connectionState: connectionState, maybeError: maybeError)
  */
-
-extension NWTCPConnectionState: CustomStringConvertible
-{
-    public var description: String
-    {
-        switch self
-        {
-        case .disconnected: return "Disconnected"
-        case .invalid: return "Invalid"
-        case .connected: return "Connected"
-        case .connecting: return "Connecting"
-        case .cancelled: return "Cancelled"
-        case .waiting: return "Waiting"
-        }
-    }
-}
 
 /// A packet tunnel provider object.
 class PacketTunnelProvider: NEPacketTunnelProvider
@@ -64,6 +50,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider
     {
         self.logQueue.enqueue("startTunnel called")
         
+        pendingStartCompletion = completionHandler
+        
         // Save the completion handler for when the tunnel is fully established.
         pendingStartCompletion = completionHandler
         
@@ -77,7 +65,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider
         
         self.logQueue.enqueue("Server address: \(serverAddress)")
         
-        let frontURL = URL(string: "https://www.google.com")
+        // Kick off the connection to the server
+        logQueue.enqueue("Kicking off the connections to the server.")
+        
+        //FIXME:
         guard let serverURL = URL(string: "https://\(serverAddress)/")
             else
         {
@@ -85,46 +76,46 @@ class PacketTunnelProvider: NEPacketTunnelProvider
             completionHandler(SimpleTunnelError.badConfiguration)
             return
         }
-        
-        // Kick off the connection to the server
-        logQueue.enqueue("Kicking off the connections to the server.")
-        //        guard let meekConnection = createMeekTCPConnection(provider: provider, to: frontURL!, serverURL: serverURL)
-        //        else
-        //        {
-        //            logQueue.enqueue("Unable to establish Meek TCP connection.")
-        //            return .badConfiguration
-        //        }
-        //
-        //        connection = meekConnection
-        //        logQueue.enqueue("MeekTCPConnection created.")
-        
-        let endpoint = NWHostEndpoint(hostname: "www.google.com", port: "443")
-        guard let tcpConnection: NWTCPConnection = self.createTCPConnectionThroughTunnel(to: endpoint, enableTLS: true, tlsParameters: nil, delegate: nil)
-            else
+        let frontURL = serverURL
+        guard let meekConnection = createMeekTCPConnection(provider: self, to: frontURL, serverURL: serverURL, logQueue: logQueue)
+        else
         {
-            logQueue.enqueue("Unable to establish TCP connection.")
+            logQueue.enqueue("Unable to establish Meek TCP connection.")
             completionHandler(SimpleTunnelError.badConfiguration)
             return
         }
-        
-        connection = tcpConnection
-        logQueue.enqueue("TCPConnection created")
+
+        connection = meekConnection
+        logQueue.enqueue("MeekTCPConnection created.")
+
+//        let endpoint = NWHostEndpoint(hostname: "2600:1700:240:3bf0:99c3:2e43:26f8:9264", port: "8080")
+//        let fakePacketTunnelProvider = FakePacketTunnelProvider()
+//        guard let tcpConnection = fakePacketTunnelProvider.createTCPConnectionThroughTunnel(to: endpoint, enableTLS: false, tlsParameters: nil, delegate: nil)
+//            else
+//        {
+//            logQueue.enqueue("Unable to establish TCP connection.")
+//            completionHandler(SimpleTunnelError.badConfiguration)
+//            return
+//        }
+//
+//        connection = tcpConnection
+//        logQueue.enqueue("TCPConnection created")
         
         // Register for notificationes when the connection status changes.
         logQueue.enqueue("Registering for connection status change notifications.")
-        logQueue.enqueue("CURRENT STATE = \(tcpConnection.state.description)")
+        logQueue.enqueue("CURRENT STATE = \(String(describing: connection?.state.description))")
         if connection?.state == .waiting
         {
             logQueue.enqueue("CONNECTION STATE IS ALREADY WAITING")
             completionHandler(SimpleTunnelError.badConnection)
         }
         
-        tcpConnection.observe(\NWTCPConnection.state)
-        {
-            (nwtcpConnection, observedChange) in
-            
-            self.logQueue.enqueue("Received state change from NWTCPConnection: \(String(describing: observedChange.newValue))")
-        }
+//        tcpConnection.observe(\NWTCPConnection.state)
+//        {
+//            (nwtcpConnection, observedChange) in
+//
+//            self.logQueue.enqueue("Received state change from NWTCPConnection: \(String(describing: observedChange.newValue))")
+//        }
 
         connection!.observeState
         {
@@ -172,7 +163,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider
             //connection!.addObserver(self, forKeyPath: "state", options: .initial, context: &connection)
         }
 
-        logQueue.enqueue("CURRENT STATE = \(tcpConnection.state.description)")
+        logQueue.enqueue("CURRENT STATE = \(connection?.state.description)")
         
     }
 
@@ -214,10 +205,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider
 	override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?)
     {
         let state = connection?.state
-        self.logQueue.enqueue("^^^connections state: \(state?.description)")
+        self.logQueue.enqueue("^^^connections state: \(String(describing: state?.description))")
         self.logQueue.enqueue("error: \(String(describing: connection?.error))")
         self.logQueue.enqueue("endpoint: \(String(describing: connection?.endpoint))")
-        
         
         var responseString = "Nothing to see here!"
 
@@ -231,6 +221,25 @@ class PacketTunnelProvider: NEPacketTunnelProvider
         }
         
 		let responseData = responseString.data(using: String.Encoding.utf8)
+        
+        guard let actuallyAConnection = connection
+            else
+        {
+            logQueue.enqueue("Connection is nil  😳")
+            completionHandler?(responseData)
+            return
+        }
+        
+        switch actuallyAConnection.state
+        {
+        case .connected:
+            logQueue.enqueue("handleAppMessage switch statement - CONNECTED")
+            pendingStartCompletion!(nil)
+
+        default:
+            pendingStartCompletion!(SimpleTunnelError.badConnection)
+            break
+        }
 		completionHandler?(responseData)
 	}
 

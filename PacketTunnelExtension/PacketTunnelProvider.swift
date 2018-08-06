@@ -9,8 +9,6 @@
 import NetworkExtension
 import SwiftQueue
 import Transport
-import ShapeshifterTesting
-import Meek
 
 /*
  TODO:
@@ -22,8 +20,11 @@ import Meek
 /// A packet tunnel provider object.
 class PacketTunnelProvider: NEPacketTunnelProvider
 {
+    /// Use this to create connections
+    var connectionFactory: NetworkConnectionFactory?
+    
     /// The tunnel connection.
-    open var connection: TCPConnection?
+    open var connection: Connection?
 
 	/// The single logical flow of packets through the tunnel.
 	var tunnelConnection: ClientTunnelConnection?
@@ -42,15 +43,26 @@ class PacketTunnelProvider: NEPacketTunnelProvider
     
     /// The address of the tunnel server.
     open var remoteHost: String?
+    
+    /// To make sure that we don't try connecting repeatedly and unintentionally
+    var connectionAttemptStatus: ConnectionAttemptStatus = .initialized
 
 	// MARK: NEPacketTunnelProvider
 
 	/// Start the TCP connection to the tunnel server.
 	override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void)
     {
-        self.logQueue.enqueue("startTunnel called")
+        switch connectionAttemptStatus
+        {
+        case .initialized:
+            connectionAttemptStatus = .started
+        case .started:
+            logQueue.enqueue("start tunnel called when tunnel was already started.")
+        case .connecting:
+            connectionAttemptStatus = .started
+        }
         
-        pendingStartCompletion = completionHandler
+        logQueue.enqueue("startTunnel called")
         
         // Save the completion handler for when the tunnel is fully established.
         pendingStartCompletion = completionHandler
@@ -62,109 +74,29 @@ class PacketTunnelProvider: NEPacketTunnelProvider
             completionHandler(SimpleTunnelError.badConfiguration)
             return
         }
-        
+        self.remoteHost = serverAddress
         self.logQueue.enqueue("Server address: \(serverAddress)")
         
-        // Kick off the connection to the server
-        logQueue.enqueue("Kicking off the connections to the server.")
-        
-        //FIXME:
-        guard let serverURL = URL(string: "https://\(serverAddress)/")
+        //FIXME: Needs to be the server address not hard-coded
+        guard let ipv4Address = IPv4Address("166.78.129.122")
             else
         {
-            logQueue.enqueue("Unable to resolve front url.")
-            completionHandler(SimpleTunnelError.badConfiguration)
+            logQueue.enqueue("Unable to resolve host address.")
             return
         }
-        let frontURL = serverURL
-        guard let meekConnection = createMeekTCPConnection(provider: self, to: frontURL, serverURL: serverURL, logQueue: logQueue)
-        else
+        
+        let host = NWEndpoint.Host.ipv4(ipv4Address)
+        let portString = "8080"
+        
+        guard let portUInt = UInt16(portString), let port = NWEndpoint.Port(rawValue: portUInt)
+            else
         {
-            logQueue.enqueue("Unable to establish Meek TCP connection.")
-            completionHandler(SimpleTunnelError.badConfiguration)
+            logQueue.enqueue("Unable to resolve host port.")
             return
         }
-
-        connection = meekConnection
-        logQueue.enqueue("MeekTCPConnection created.")
-
-//        let endpoint = NWHostEndpoint(hostname: "2600:1700:240:3bf0:99c3:2e43:26f8:9264", port: "8080")
-//        let fakePacketTunnelProvider = FakePacketTunnelProvider()
-//        guard let tcpConnection = fakePacketTunnelProvider.createTCPConnectionThroughTunnel(to: endpoint, enableTLS: false, tlsParameters: nil, delegate: nil)
-//            else
-//        {
-//            logQueue.enqueue("Unable to establish TCP connection.")
-//            completionHandler(SimpleTunnelError.badConfiguration)
-//            return
-//        }
-//
-//        connection = tcpConnection
-//        logQueue.enqueue("TCPConnection created")
         
-        // Register for notificationes when the connection status changes.
-        logQueue.enqueue("Registering for connection status change notifications.")
-        logQueue.enqueue("CURRENT STATE = \(String(describing: connection?.state.description))")
-        if connection?.state == .waiting
-        {
-            logQueue.enqueue("CONNECTION STATE IS ALREADY WAITING")
-            completionHandler(SimpleTunnelError.badConnection)
-        }
-        
-//        tcpConnection.observe(\NWTCPConnection.state)
-//        {
-//            (nwtcpConnection, observedChange) in
-//
-//            self.logQueue.enqueue("Received state change from NWTCPConnection: \(String(describing: observedChange.newValue))")
-//        }
-
-        connection!.observeState
-        {
-            (connectionState, maybeError) in
-            
-            // Handle connection state callback
-            self.logQueue.enqueue("Connection state callback: \(connectionState), \(String(describing: maybeError))")
-            
-            self.logQueue.enqueue(">>Tunnel connection state changed to \(self.connection!.state)<<")
-            
-            switch self.connection!.state
-            {
-                case .connected:
-                    if let remoteAddress = self.connection!.remoteAddress as? NWHostEndpoint
-                    {
-                        self.remoteHost = remoteAddress.hostname
-                    }
-                    
-                    // Start reading messages from the tunnel connection.
-                    self.tunnelConnection?.startHandlingPackets()
-                    
-                    // Open the logical flow of packets through the tunnel.
-                    let newConnection = ClientTunnelConnection(clientPacketFlow: self.packetFlow)
-
-                    self.tunnelConnectionDidOpen(newConnection, configuration: [:])
-                    self.logQueue.enqueue("\n🚀 open() called on tunnel connection  🚀\n")
-                    self.tunnelConnection = newConnection
-                    completionHandler(nil)
-                
-                case .disconnected:
-                    self.closeTunnelWithError(self.connection!.error)
-                    completionHandler(SimpleTunnelError.disconnected)
-                
-                case .cancelled:
-                    //TODO: connection!.removeObserver(self, forKeyPath:"state", context:&connection)
-                    self.connection = nil
-                    self.tunnelDidClose()
-                    completionHandler(SimpleTunnelError.cancelled)
-                
-                default:
-                    completionHandler(SimpleTunnelError.badConnection)
-                    break
-                }
-            
-            //connection!.addObserver(self, forKeyPath: "state", options: .initial, context: &connection)
-        }
-
-        logQueue.enqueue("CURRENT STATE = \(connection?.state.description)")
-        
+        connectionFactory = NetworkConnectionFactory(host: host, port: port)
+        logQueue.enqueue("Connection Factory Created")
     }
 
 	/// Begin the process of stopping the tunnel.
@@ -182,6 +114,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider
             TCPConnection.cancel()
         }
         
+        connectionAttemptStatus = .initialized
         pendingStopCompletion?()
 	}
     
@@ -199,15 +132,22 @@ class PacketTunnelProvider: NEPacketTunnelProvider
         }
         
         tunnelConnection = nil
+        connectionAttemptStatus = .initialized
     }
 
 	/// Handle IPC messages from the app.
 	override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?)
     {
-        let state = connection?.state
-        self.logQueue.enqueue("^^^connections state: \(String(describing: state?.description))")
-        self.logQueue.enqueue("error: \(String(describing: connection?.error))")
-        self.logQueue.enqueue("endpoint: \(String(describing: connection?.endpoint))")
+        switch connectionAttemptStatus
+        {
+            case .initialized:
+                logQueue.enqueue("handleAppMessage called before start tunnel. Doing nothing...")
+            case .started:
+                connectionAttemptStatus = .connecting
+                setTunnelSettings(configuration: [:])
+            case .connecting:
+                break
+        }
         
         var responseString = "Nothing to see here!"
 
@@ -222,24 +162,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider
         
 		let responseData = responseString.data(using: String.Encoding.utf8)
         
-        guard let actuallyAConnection = connection
-            else
-        {
-            logQueue.enqueue("Connection is nil  😳")
-            completionHandler?(responseData)
-            return
-        }
-        
-        switch actuallyAConnection.state
-        {
-        case .connected:
-            logQueue.enqueue("handleAppMessage switch statement - CONNECTED")
-            pendingStartCompletion!(nil)
-
-        default:
-            pendingStartCompletion!(SimpleTunnelError.badConnection)
-            break
-        }
 		completionHandler?(responseData)
 	}
 
@@ -268,57 +190,133 @@ class PacketTunnelProvider: NEPacketTunnelProvider
 	// MARK: ClientTunnelConnectionDelegate
 
 	/// Handle the event of the logical flow of packets being established through the tunnel.
-	func tunnelConnectionDidOpen(_ connection: ClientTunnelConnection, configuration: [NSObject: AnyObject])
+	func setTunnelSettings(configuration: [NSObject: AnyObject])
     {
         logQueue.enqueue("\n🚀 tunnelConnectionDidOpen  🚀\n")
-		// Create the virtual interface settings.
-		guard let settings = createTunnelSettingsFromConfiguration(configuration)
+        
+        // Create the virtual interface settings.
+        guard let settings = createTunnelSettingsFromConfiguration(configuration)
         else
         {
-			pendingStartCompletion?(SimpleTunnelError.internalError)
-			pendingStartCompletion = nil
-			return
-		}
+            connectionAttemptStatus = .initialized
+            pendingStartCompletion?(SimpleTunnelError.internalError)
+            pendingStartCompletion = nil
+            return
+        }
 
-		// Set the virtual interface settings.
-		setTunnelNetworkSettings(settings)
-        {
-            error in
-			
-            var startError: Error?
-			if let error = error
-            {
-                self.logQueue.enqueue("Failed to set the tunnel network settings: \(error)")
-				startError = SimpleTunnelError.badConfiguration
-			}
-			else
-            {
-				// Now we can start reading and writing packets to/from the virtual interface.
-				self.tunnelConnection?.startHandlingPackets()
-			}
-
-            //TODO: This causes the status to be changed to connected
-			// Now the tunnel is fully established, call the start completion handler.
-			self.pendingStartCompletion?(startError)
-			self.pendingStartCompletion = nil
-		}
+        // Set the virtual interface settings.
+        setTunnelNetworkSettings(settings, completionHandler: tunnelSettingsCompleted)
 	}
+    
+    func tunnelSettingsCompleted(maybeError: Error?)
+    {
+        logQueue.enqueue("Tunnel settings updated.")
+        if let error = maybeError
+        {
+            self.logQueue.enqueue("Failed to set the tunnel network settings: \(error)")
+            connectionAttemptStatus = .initialized
+            self.pendingStartCompletion?(error)
+            self.pendingStartCompletion = nil
+        }
+        else
+        {
+            connectToServer()
+        }
+    }
 
 	/// Create the tunnel network settings to be applied to the virtual interface.
 	func createTunnelSettingsFromConfiguration(_ configuration: [NSObject: AnyObject]) -> NEPacketTunnelNetworkSettings?
     {
+        let newSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "166.78.129.122")
         let address = "192.168.2.1"
         let netmask = "255.255.255.0"
-        
-		guard let tunnelAddress = remoteHost
-        else { return nil }
 
-		let newSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: tunnelAddress)
+        //FIXME: tunnelAddress should be remoteHost,
+        // configuration argument is ignored
+//        guard let tunnelAddress = remoteHost
+//        else
+//        {
+//            logQueue.enqueue("Unable to resolve tunnelAddress for NEPacketTunnelNetworkSettings")
+//            return nil
+//
+//        }
+//
+//        let newSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: tunnelAddress)
         newSettings.ipv4Settings = NEIPv4Settings(addresses: [address], subnetMasks: [netmask])
         newSettings.ipv4Settings?.includedRoutes = [NEIPv4Route.default()]
         newSettings.dnsSettings = NEDNSSettings(servers: ["8.8.8.8"])
-		newSettings.tunnelOverheadBytes = 150
+        newSettings.tunnelOverheadBytes = 150
 
 		return newSettings
 	}
+    
+    //MARK: Helper Functions
+    
+    func connectToServer()
+    {
+        logQueue.enqueue("Connect to server called.")
+        guard let connectionFactory = connectionFactory
+        else
+        {
+            logQueue.enqueue("Unable to find connection facotory.")
+            return
+        }
+        
+        let parameters = NWParameters()
+        let connectQueue = DispatchQueue(label: "connectQueue")
+        connection = connectionFactory.connect(parameters)
+        connection?.stateUpdateHandler = handleStateUpdate
+        
+        // Kick off the connection to the server
+        logQueue.enqueue("Kicking off the connection to the server.")
+        connection?.start(queue: connectQueue)
+    }
+    
+    func handleStateUpdate(newState: NWConnection.State)
+    {
+        self.logQueue.enqueue("CURRENT STATE = \(newState))")
+        
+        guard let startCompletion = pendingStartCompletion
+            else
+        {
+            logQueue.enqueue("pendingStartCompletion is nil?")
+            return
+        }
+        
+        switch newState
+        {
+        case .ready:
+            // Start reading messages from the tunnel connection.
+            self.tunnelConnection?.startHandlingPackets()
+
+            // Open the logical flow of packets through the tunnel.
+            let newConnection = ClientTunnelConnection(clientPacketFlow: self.packetFlow)
+            self.logQueue.enqueue("\n🚀 open() called on tunnel connection  🚀\n")
+            self.tunnelConnection = newConnection
+            startCompletion(nil)
+
+        case .cancelled:
+            self.logQueue.enqueue("\n🙅‍♀️  Connection Canceled  🙅‍♀️\n")
+            self.connection = nil
+            self.tunnelDidClose()
+            startCompletion(SimpleTunnelError.cancelled)
+
+        case .failed(let error):
+            self.logQueue.enqueue("\n🐒💨  Connection Failed  🐒💨\n")
+            self.closeTunnelWithError(error)
+            startCompletion(error)
+
+        default:
+            self.logQueue.enqueue("\n🤷‍♀️  Unexpected State: \(newState))  🤷‍♀️\n")
+        }
+    }
+    
+    
+}
+
+enum ConnectionAttemptStatus
+{
+    case initialized
+    case started
+    case connecting
 }

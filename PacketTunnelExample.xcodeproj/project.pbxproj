@@ -19,18 +19,13 @@
 		460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E6F521F96563900F011B8 /* NetworkExtension.framework */; };
 		463DF2DE209A1C490066813D /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E6F521F96563900F011B8 /* NetworkExtension.framework */; };
 		46986E3B20AE1078003EC8BE /* SimpleTunnelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46986E3A20AE1078003EC8BE /* SimpleTunnelError.swift */; };
-		469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
 		469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
 		46E9404E20A0DA4A009C342A /* Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; };
 		46E9404F20A0DA4A009C342A /* Transport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DD209A188B0066813D /* Transport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		46E9405220A0DA73009C342A /* Meek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; };
-		46E9405320A0DA73009C342A /* Meek.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2DB209A188B0066813D /* Meek.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46E9405620A0DAA3009C342A /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2D9209A188B0066813D /* CryptoSwift.framework */; };
 		46E9405720A0DAA3009C342A /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 463DF2D9209A188B0066813D /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46FCA00E20B36EE7000A2919 /* SwiftQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */; };
 		46FCA00F20B36EE7000A2919 /* SwiftQueue.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		46FCA04320B8C228000A2919 /* ShapeshifterTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FCA04120B8C215000A2919 /* ShapeshifterTesting.framework */; };
-		46FCA04420B8C228000A2919 /* ShapeshifterTesting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46FCA04120B8C215000A2919 /* ShapeshifterTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E78C2CF1F97A93C00C9B616 /* ClientTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */; };
 		4E78C3061F97A96D00C9B616 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E78C3051F97A96D00C9B616 /* Info.plist */; };
 		4E78C34A1F97ACDB00C9B616 /* PacketTunnelExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E78C3421F97ACDB00C9B616 /* PacketTunnelExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -80,19 +75,61 @@
 			remoteGlobalIDString = "CryptoSwift::CryptoSwift::Product";
 			remoteInfo = CryptoSwift;
 		};
-		463DF2DA209A188B0066813D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Shapeshifter-Swift-Transports::Meek::Product";
-			remoteInfo = Meek;
-		};
 		463DF2DC209A188B0066813D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = "Transport::Transport::Product";
 			remoteInfo = Transport;
+		};
+		466FFBA121123EE30076F985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Cryptor::Cryptor::Product";
+			remoteInfo = Cryptor;
+		};
+		466FFBA321123EE30076F985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Elligator::Elligator::Product";
+			remoteInfo = Elligator;
+		};
+		466FFBA521123EE30076F985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Elligator::ElligatorObjC::Product";
+			remoteInfo = ElligatorObjC;
+		};
+		466FFBA721123EE30076F985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "HKDF::HKDF::Product";
+			remoteInfo = HKDF;
+		};
+		466FFBA921123EE30076F985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "swift-sodium::Sodium::Product";
+			remoteInfo = Sodium;
+		};
+		466FFBAB21123EE30076F985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Shapeshifter-Swift-Transports::Wisp::Product";
+			remoteInfo = Wisp;
+		};
+		466FFBAD21123EE30076F985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Elligator::celligator::Product";
+			remoteInfo = celligator;
 		};
 		46986E2B20ADFC10003EC8BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -108,13 +145,6 @@
 			remoteGlobalIDString = "Transport::Transport";
 			remoteInfo = Transport;
 		};
-		46E9405420A0DA73009C342A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "Shapeshifter-Swift-Transports::Meek";
-			remoteInfo = Meek;
-		};
 		46E9405820A0DAA3009C342A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
@@ -128,20 +158,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = "SwiftQueue::SwiftQueue";
 			remoteInfo = SwiftQueue;
-		};
-		46FCA04020B8C215000A2919 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Shapeshifter-Swift-Transports::ShapeshifterTesting::Product";
-			remoteInfo = ShapeshifterTesting;
-		};
-		46FCA04520B8C228000A2919 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "Shapeshifter-Swift-Transports::ShapeshifterTesting";
-			remoteInfo = ShapeshifterTesting;
 		};
 		4E78C3481F97ACDB00C9B616 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -160,9 +176,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				46E9404F20A0DA4A009C342A /* Transport.framework in Embed Frameworks */,
-				46E9405320A0DA73009C342A /* Meek.framework in Embed Frameworks */,
 				46E9405720A0DAA3009C342A /* CryptoSwift.framework in Embed Frameworks */,
-				46FCA04420B8C228000A2919 /* ShapeshifterTesting.framework in Embed Frameworks */,
 				46FCA00F20B36EE7000A2919 /* SwiftQueue.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -251,12 +265,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46E9405220A0DA73009C342A /* Meek.framework in Frameworks */,
 				46E9404E20A0DA4A009C342A /* Transport.framework in Frameworks */,
 				46E9405620A0DAA3009C342A /* CryptoSwift.framework in Frameworks */,
 				460E6F531F96563900F011B8 /* NetworkExtension.framework in Frameworks */,
 				46FCA00E20B36EE7000A2919 /* SwiftQueue.framework in Frameworks */,
-				46FCA04320B8C228000A2919 /* ShapeshifterTesting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +277,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				469B6BCD20AB41D4004FAF28 /* Transport.framework in Frameworks */,
-				469B6BCC20AB41CC004FAF28 /* Meek.framework in Frameworks */,
 				463DF2DE209A1C490066813D /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,12 +338,17 @@
 			isa = PBXGroup;
 			children = (
 				463DF2D9209A188B0066813D /* CryptoSwift.framework */,
-				463DF2DB209A188B0066813D /* Meek.framework */,
+				466FFBA221123EE30076F985 /* Cryptor.framework */,
+				466FFBA421123EE30076F985 /* Elligator.framework */,
+				466FFBA621123EE30076F985 /* ElligatorObjC.framework */,
+				466FFBA821123EE30076F985 /* HKDF.framework */,
 				463DF2BD209A10370066813D /* PacketTunnelExampleDependencies.framework */,
 				463DF2BF209A10370066813D /* PacketTunnelExampleDependenciesTests.xctest */,
-				46FCA04120B8C215000A2919 /* ShapeshifterTesting.framework */,
+				466FFBAA21123EE30076F985 /* Sodium.framework */,
 				46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */,
 				463DF2DD209A188B0066813D /* Transport.framework */,
+				466FFBAC21123EE30076F985 /* Wisp.framework */,
+				466FFBAE21123EE30076F985 /* celligator.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -454,10 +470,8 @@
 			dependencies = (
 				4E78C3491F97ACDB00C9B616 /* PBXTargetDependency */,
 				46E9405120A0DA4A009C342A /* PBXTargetDependency */,
-				46E9405520A0DA73009C342A /* PBXTargetDependency */,
 				46E9405920A0DAA3009C342A /* PBXTargetDependency */,
 				46FCA01120B36EE7000A2919 /* PBXTargetDependency */,
-				46FCA04620B8C228000A2919 /* PBXTargetDependency */,
 			);
 			name = PacketTunnelExample;
 			productName = PacketTunnelExample;
@@ -570,13 +584,6 @@
 			remoteRef = 463DF2D8209A188B0066813D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		463DF2DB209A188B0066813D /* Meek.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Meek.framework;
-			remoteRef = 463DF2DA209A188B0066813D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		463DF2DD209A188B0066813D /* Transport.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -584,18 +591,60 @@
 			remoteRef = 463DF2DC209A188B0066813D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		466FFBA221123EE30076F985 /* Cryptor.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Cryptor.framework;
+			remoteRef = 466FFBA121123EE30076F985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		466FFBA421123EE30076F985 /* Elligator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Elligator.framework;
+			remoteRef = 466FFBA321123EE30076F985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		466FFBA621123EE30076F985 /* ElligatorObjC.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ElligatorObjC.framework;
+			remoteRef = 466FFBA521123EE30076F985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		466FFBA821123EE30076F985 /* HKDF.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HKDF.framework;
+			remoteRef = 466FFBA721123EE30076F985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		466FFBAA21123EE30076F985 /* Sodium.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sodium.framework;
+			remoteRef = 466FFBA921123EE30076F985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		466FFBAC21123EE30076F985 /* Wisp.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Wisp.framework;
+			remoteRef = 466FFBAB21123EE30076F985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		466FFBAE21123EE30076F985 /* celligator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = celligator.framework;
+			remoteRef = 466FFBAD21123EE30076F985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = SwiftQueue.framework;
 			remoteRef = 46986E2B20ADFC10003EC8BE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		46FCA04120B8C215000A2919 /* ShapeshifterTesting.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ShapeshifterTesting.framework;
-			remoteRef = 46FCA04020B8C215000A2919 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -681,11 +730,6 @@
 			name = Transport;
 			targetProxy = 46E9405020A0DA4A009C342A /* PBXContainerItemProxy */;
 		};
-		46E9405520A0DA73009C342A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Meek;
-			targetProxy = 46E9405420A0DA73009C342A /* PBXContainerItemProxy */;
-		};
 		46E9405920A0DAA3009C342A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CryptoSwift;
@@ -695,11 +739,6 @@
 			isa = PBXTargetDependency;
 			name = SwiftQueue;
 			targetProxy = 46FCA01020B36EE7000A2919 /* PBXContainerItemProxy */;
-		};
-		46FCA04620B8C228000A2919 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ShapeshifterTesting;
-			targetProxy = 46FCA04520B8C228000A2919 /* PBXContainerItemProxy */;
 		};
 		4E78C3491F97ACDB00C9B616 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -787,10 +826,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos11.3;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -842,8 +880,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos11.3;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -863,7 +900,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
 				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExample/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -884,7 +921,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
 				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExample/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -904,7 +941,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
 				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExtension/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -926,7 +963,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
 				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExtension/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

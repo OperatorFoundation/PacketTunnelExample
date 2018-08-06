@@ -8,7 +8,6 @@
 
 import UIKit
 import NetworkExtension
-import ShapeshifterTesting
 
 // MARK: Extensions
 

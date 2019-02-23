@@ -11,7 +11,8 @@ import NetworkExtension
 import Security
 
 /// A view controller object for a table view containing input fields used to specify configuration parameters for a VPN configuration.
-class AddEditConfiguration: ConfigurationParametersViewController {
+class AddEditConfiguration: ConfigurationParametersViewController
+{
 
 	// MARK: Properties
 
@@ -170,8 +171,10 @@ class AddEditConfiguration: ConfigurationParametersViewController {
 	}
 
 	/// Save the configuration to the Network Extension preferences.
-	@IBAction func saveTargetManager(_ sender: AnyObject) {
-		if !proxiesCell.isOn {
+	@IBAction func saveTargetManager(_ sender: AnyObject)
+    {
+		if !proxiesCell.isOn
+        {
 			targetManager.protocolConfiguration?.proxySettings = nil
 		}
 		targetManager.saveToPreferences { error in

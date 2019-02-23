@@ -10,9 +10,10 @@ import UIKit
 import NetworkExtension
 
 /// The view controller object for the list of packet tunnel configurations.
-class ConfigurationListController: ListViewController {
+class ConfigurationListController: ListViewController
+{
 
-	// MARK: Properties
+	// MARK: - Properties
 
 	/// The image to display for configurations that are disabled.
 	let disabledImage = UIImage(named: "GrayDot")
@@ -29,13 +30,15 @@ class ConfigurationListController: ListViewController {
 	// MARK: UIViewController
 
 	/// Handle the event of the view loading into memory.
-	override func viewDidLoad() {
+	override func viewDidLoad()
+    {
 		isAddEnabled = true
 		super.viewDidLoad()
 	}
 
 	/// Handle the event of the view being displayed.
-	override func viewWillAppear(_ animated: Bool) {
+	override func viewWillAppear(_ animated: Bool)
+    {
 		super.viewWillAppear(animated)
 
 		// Re-load all of the configurations.
@@ -45,8 +48,12 @@ class ConfigurationListController: ListViewController {
 	// MARK: Interface
 
 	/// Re-load all of the packet tunnel configurations from the Network Extension preferences
-	func reloadManagers() {
-		NETunnelProviderManager.loadAllFromPreferences() { newManagers, error in
+	func reloadManagers()
+    {
+		NETunnelProviderManager.loadAllFromPreferences()
+        {
+            newManagers, error in
+            
 			guard let vpnManagers = newManagers else { return }
 
 			self.stopObservingStatus()
@@ -54,7 +61,8 @@ class ConfigurationListController: ListViewController {
 			self.observeStatus()
 
 			// If there are no configurations, automatically go into editing mode.
-			if self.managers.count == 0 && !self.isEditing {
+			if self.managers.count == 0 && !self.isEditing
+            {
 				self.setEditing(true, animated: false)
 			}
 
@@ -63,8 +71,10 @@ class ConfigurationListController: ListViewController {
 	}
 
 	/// Register for configuration change notifications.
-	func observeStatus() {
-		for (index, manager) in managers.enumerated() {
+	func observeStatus()
+    {
+		for (index, manager) in managers.enumerated()
+        {
 			NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object: manager.connection, queue: OperationQueue.main, using: { notification in
 				self.tableView.reloadRows(at: [ IndexPath(row: index, section: 0) ], with: .fade)
 			})
@@ -72,8 +82,10 @@ class ConfigurationListController: ListViewController {
 	}
 
 	/// De-register for configuration change notifications.
-	func stopObservingStatus() {
-		for manager in managers {
+	func stopObservingStatus()
+    {
+		for manager in managers
+        {
 			NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NEVPNStatusDidChange, object: manager.connection)
 		}
 	}
@@ -124,12 +136,14 @@ class ConfigurationListController: ListViewController {
 	}
 
 	/// Returns the appropriate image for the configuration at the given index.
-	override func listImageForItemAtIndex(_ index: Int) -> UIImage? {
+	override func listImageForItemAtIndex(_ index: Int) -> UIImage?
+    {
 		let manager = managers[index]
 
 		guard manager.isEnabled else { return disabledImage }
 
-		switch manager.connection.status {
+		switch manager.connection.status
+        {
 			case .invalid: fallthrough
 			case .disconnected: return disconnectedImage
 			default: return notDisconnectedImage
@@ -137,7 +151,8 @@ class ConfigurationListController: ListViewController {
 	}
 
 	/// Returns UITableViewCellAccessoryType.DisclosureIndicator.
-	override var listAccessoryType: UITableViewCellAccessoryType {
+	override var listAccessoryType: UITableViewCellAccessoryType
+    {
 		return .disclosureIndicator
 	}
 

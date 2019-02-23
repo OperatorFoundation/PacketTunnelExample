@@ -9,7 +9,8 @@
 import UIKit
 
 /// A view controller of a view that displays an editable list of strings.
-class StringListController: ListViewController {
+class StringListController: ListViewController
+{
 
 	// MARK: Properties
 

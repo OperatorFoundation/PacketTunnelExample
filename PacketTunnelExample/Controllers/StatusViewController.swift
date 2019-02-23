@@ -9,25 +9,6 @@
 import UIKit
 import NetworkExtension
 
-// MARK: Extensions
-
-/// Make NEVPNStatus convertible to a string
-extension NEVPNStatus: CustomStringConvertible
-{
-    public var description: String
-    {
-        switch self
-        {
-        	case .disconnected: return "Disconnected"
-        	case .invalid: return "Invalid"
-        	case .connected: return "Connected"
-        	case .connecting: return "Connecting"
-        	case .disconnecting: return "Disconnecting"
-        	case .reasserting: return "Reconnecting"
-        }
-    }
-}
-
 /// A view controller object for a view that displays VPN status information and allows the user to start and stop the VPN.
 class StatusViewController: UITableViewController
 {
@@ -52,7 +33,6 @@ class StatusViewController: UITableViewController
     {
 		super.viewWillAppear(animated)
 
-        
 		// Initialize the UI
 		enabledSwitch.isOn = targetManager.isEnabled
 		startStopToggle.isOn = (targetManager.connection.status != .disconnected && targetManager.connection.status != .invalid)
@@ -136,7 +116,9 @@ class StatusViewController: UITableViewController
 				return
 			}
 			
-			self.targetManager.loadFromPreferences { error in
+			self.targetManager.loadFromPreferences
+            {
+                error in
 				self.enabledSwitch.isOn = self.targetManager.isEnabled
 				self.startStopToggle.isEnabled = self.enabledSwitch.isOn
 			}

@@ -27,7 +27,6 @@
 		46FCA00E20B36EE7000A2919 /* SwiftQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */; };
 		46FCA00F20B36EE7000A2919 /* SwiftQueue.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46986E2C20ADFC10003EC8BE /* SwiftQueue.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E78C2CF1F97A93C00C9B616 /* ClientTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */; };
-		4E78C3061F97A96D00C9B616 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E78C3051F97A96D00C9B616 /* Info.plist */; };
 		4E78C34A1F97ACDB00C9B616 /* PacketTunnelExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E78C3421F97ACDB00C9B616 /* PacketTunnelExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4E78C3681F97AE9200C9B616 /* AddEditConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C34F1F97AE9200C9B616 /* AddEditConfiguration.swift */; };
 		4E78C3691F97AE9200C9B616 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3501F97AE9200C9B616 /* AppDelegate.swift */; };
@@ -51,6 +50,7 @@
 		4E78C37E1F97AE9300C9B616 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C3671F97AE9200C9B616 /* TextFieldCell.swift */; };
 		4E78C3801F97B47200C9B616 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C37F1F97B47200C9B616 /* PacketTunnelProvider.swift */; };
 		4E78C3841F97B63800C9B616 /* ClientTunnelConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78C2CC1F97A93C00C9B616 /* ClientTunnelConnection.swift */; };
+		AE135ADB221396B200E81823 /* NEVPNStatus+CustomStriongConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE135ADA221396B200E81823 /* NEVPNStatus+CustomStriongConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +166,13 @@
 			remoteGlobalIDString = 4E78C3411F97ACDB00C9B616;
 			remoteInfo = PacketTunnel;
 		};
+		AE135A04220E364B00E81823 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463DF2B5209A10370066813D /* PacketTunnelExampleDependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Sodium::Clibsodium::Product";
+			remoteInfo = Clibsodium;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -251,6 +258,7 @@
 		4E78C37F1F97B47200C9B616 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		4E78C3851F97C25600C9B616 /* PacketTunnelExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExample.entitlements; sourceTree = "<group>"; };
 		4E78C3871F97CA5E00C9B616 /* PacketTunnelExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelExtension.entitlements; sourceTree = "<group>"; };
+		AE135ADA221396B200E81823 /* NEVPNStatus+CustomStriongConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEVPNStatus+CustomStriongConvertible.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +345,7 @@
 		463DF2B6209A10370066813D /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				AE135A05220E364B00E81823 /* Clibsodium.framework */,
 				463DF2D9209A188B0066813D /* CryptoSwift.framework */,
 				466FFBA221123EE30076F985 /* Cryptor.framework */,
 				466FFBA421123EE30076F985 /* Elligator.framework */,
@@ -431,6 +440,7 @@
 			children = (
 				4E78C3851F97C25600C9B616 /* PacketTunnelExample.entitlements */,
 				4E78C3641F97AE9200C9B616 /* Info.plist */,
+				AE135ADA221396B200E81823 /* NEVPNStatus+CustomStriongConvertible.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -647,6 +657,13 @@
 			remoteRef = 46986E2B20ADFC10003EC8BE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		AE135A05220E364B00E81823 /* Clibsodium.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Clibsodium.framework;
+			remoteRef = AE135A04220E364B00E81823 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -655,7 +672,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E78C3741F97AE9300C9B616 /* Main.storyboard in Resources */,
-				4E78C3061F97A96D00C9B616 /* Info.plist in Resources */,
 				4E78C3711F97AE9300C9B616 /* Images.xcassets in Resources */,
 				2CA9A8851F9691A900A2AB4E /* config.plist in Resources */,
 				4E78C3721F97AE9300C9B616 /* LaunchScreen.xib in Resources */,
@@ -707,6 +723,7 @@
 				4E78C3791F97AE9300C9B616 /* ProxySettingsController.swift in Sources */,
 				4E78C3781F97AE9300C9B616 /* ProxyServerAddEditController.swift in Sources */,
 				4E78C3771F97AE9300C9B616 /* ProxyAutoConfigScriptController.swift in Sources */,
+				AE135ADB221396B200E81823 /* NEVPNStatus+CustomStriongConvertible.swift in Sources */,
 				4E78C37B1F97AE9300C9B616 /* StringListController.swift in Sources */,
 				4E78C37A1F97AE9300C9B616 /* StatusViewController.swift in Sources */,
 			);
@@ -826,10 +843,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos11.3;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -880,9 +897,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos11.3;
+				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
@@ -900,7 +917,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
 				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExample/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -921,7 +938,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
 				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExample/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -941,7 +958,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
 				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExtension/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -963,7 +980,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
 				INFOPLIST_FILE = "$(SRCROOT)/PacketTunnelExtension/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.operatorFoundation.PacketTunnelExample.PacketTunnelExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

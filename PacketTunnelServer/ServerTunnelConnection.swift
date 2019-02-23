@@ -84,16 +84,21 @@ class ServerTunnelConnection: Connection {
 	}
 
 	/// Create a UTUN interface.
-	func createTUNInterface() -> Int32 {
+	func createTUNInterface() -> Int32
+    {
 
 		let utunSocket = socket(PF_SYSTEM, SOCK_DGRAM, SYSPROTO_CONTROL)
-		guard utunSocket >= 0 else {
+		guard utunSocket >= 0
+            else
+        {
 			simpleTunnelLog("Failed to open a kernel control socket")
 			return -1
 		}
 
 		let controlIdentifier = getUTUNControlIdentifier(utunSocket)
-		guard controlIdentifier > 0 else {
+		guard controlIdentifier > 0
+            else
+        {
 			simpleTunnelLog("Failed to get the control ID for the utun kernel control")
 			close(utunSocket)
 			return -1
@@ -102,14 +107,18 @@ class ServerTunnelConnection: Connection {
 		// Connect the socket to the UTUN kernel control.
 		var socketAddressControl = sockaddr_ctl(sc_len: UInt8(MemoryLayout<sockaddr_ctl>.size), sc_family: UInt8(AF_SYSTEM), ss_sysaddr: UInt16(AF_SYS_CONTROL), sc_id: controlIdentifier, sc_unit: 0, sc_reserved: (0, 0, 0, 0, 0))
 
-		let connectResult = withUnsafePointer(to: &socketAddressControl) {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+		let connectResult = withUnsafePointer(to: &socketAddressControl)
+        {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1)
+            {
                 zeroSockAddress in
-			connect(utunSocket, zeroSockAddress, socklen_t(MemoryLayout.size(ofValue: socketAddressControl)))
+                
+                connect(utunSocket, zeroSockAddress, socklen_t(MemoryLayout.size(ofValue: socketAddressControl)))
             }
 		}
 
-		if let errorString = String(validatingUTF8: strerror(errno)), connectResult < 0 {
+		if let errorString = String(validatingUTF8: strerror(errno)), connectResult < 0
+        {
 			simpleTunnelLog("Failed to create a utun interface: \(errorString)")
 			close(utunSocket)
 			return -1
@@ -119,11 +128,13 @@ class ServerTunnelConnection: Connection {
 	}
 
 	/// Get the name of a UTUN interface the associated socket.
-	func getTUNInterfaceName(utunSocket: Int32) -> String? {
+	func getTUNInterfaceName(utunSocket: Int32) -> String?
+    {
 		var buffer = [Int8](repeating: 0, count: Int(IFNAMSIZ))
 		var bufferSize: socklen_t = socklen_t(buffer.count)
 		let resultCode = getsockopt(utunSocket, SYSPROTO_CONTROL, getUTUNNameOption(), &buffer, &bufferSize)
-		if let errorString = String(validatingUTF8: strerror(errno)), resultCode < 0 {
+		if let errorString = String(validatingUTF8: strerror(errno)), resultCode < 0
+        {
 			simpleTunnelLog("getsockopt failed while getting the utun interface name: \(errorString)")
 			return nil
 		}
@@ -131,8 +142,10 @@ class ServerTunnelConnection: Connection {
 	}
 
 	/// Set up the UTUN interface, start reading packets.
-	func setupVirtualInterface(address: String) -> Bool {
+	func setupVirtualInterface(address: String) -> Bool
+    {
 		let utunSocket = createTUNInterface()
+        
 		guard let interfaceName = getTUNInterfaceName(utunSocket: utunSocket), utunSocket >= 0 &&
 			setUTUNAddress(interfaceName, address)
 			else { return false }
@@ -143,8 +156,11 @@ class ServerTunnelConnection: Connection {
 	}
 
 	/// Read packets from the UTUN interface.
-	func readPackets() {
-		guard let source = utunSource else { return }
+	func readPackets()
+    {
+		guard let source = utunSource
+            else { return }
+        
 		var packets = [NSData]()
 		var protocols = [NSNumber]()
 
@@ -155,48 +171,63 @@ class ServerTunnelConnection: Connection {
 		let iovecListPointer = UnsafeBufferPointer<iovec>(start: &iovecList, count: iovecList.count)
 		let utunSocket = Int32((source as DispatchSourceProcess).handle)
 
-		repeat {
+		repeat
+        {
 			let readCount = readv(utunSocket, iovecListPointer.baseAddress, Int32(iovecListPointer.count))
 
-			guard readCount > 0 || errno == EAGAIN else {
-				if let errorString = String(validatingUTF8: strerror(errno)), readCount < 0 {
+			guard readCount > 0 || errno == EAGAIN
+                else
+            {
+				if let errorString = String(validatingUTF8: strerror(errno)), readCount < 0
+                {
 					simpleTunnelLog("Got an error on the utun socket: \(errorString)")
 				}
+                
 				source.cancel()
 				break
 			}
 
-			guard readCount > MemoryLayout.size(ofValue: protocolNumber) else { break }
+			guard readCount > MemoryLayout.size(ofValue: protocolNumber)
+                else { break }
 
-			if protocolNumber.littleEndian == protocolNumber {
+			if protocolNumber.littleEndian == protocolNumber
+            {
 				protocolNumber = protocolNumber.byteSwapped
 			}
+            
 			protocols.append(NSNumber(value: protocolNumber))
 			packets.append(NSData(bytes: &buffer, length: readCount - MemoryLayout.size(ofValue: protocolNumber)))
 
 			// Buffer up packets so that we can include multiple packets per message. Once we reach a per-message maximum send a "packets" message.
-			if packets.count == Tunnel.maximumPacketsPerMessage {
+			if packets.count == Tunnel.maximumPacketsPerMessage
+            {
 				tunnel?.sendPackets(packets as [Data], protocols: protocols, forConnection: identifier)
 				packets = [NSData]()
 				protocols = [NSNumber]()
 				if isSuspended { break } // If the entire message could not be sent and the connection is suspended, stop reading packets.
 			}
-		} while true
+		}
+            while true
 
 		// If there are unsent packets left over, send them now.
-		if packets.count > 0 {
+		if packets.count > 0
+        {
 			tunnel?.sendPackets(packets as [Data], protocols: protocols, forConnection: identifier)
 		}
 	}
 
 	/// Start reading packets from the UTUN interface.
-	func startTunnelSource(utunSocket: Int32) {
-		guard setSocketNonBlocking(utunSocket) else { return }
+	func startTunnelSource(utunSocket: Int32)
+    {
+		guard setSocketNonBlocking(utunSocket)
+            else { return }
+        
 		//guard let newSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(utunSocket), 0, dispatch_get_main_queue()) else { return }
-        guard let newSource:DispatchSource = DispatchSource.makeReadSource(fileDescriptor:utunSocket,queue:DispatchQueue.main)  as? DispatchSource else {
-            return
-        }
-		newSource.setCancelHandler() {
+        guard let newSource:DispatchSource = DispatchSource.makeReadSource(fileDescriptor:utunSocket,queue:DispatchQueue.main)  as? DispatchSource
+            else { return }
+        
+		newSource.setCancelHandler()
+        {
 			close(utunSocket)
 			return
 		}

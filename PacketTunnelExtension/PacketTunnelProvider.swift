@@ -7,6 +7,7 @@
 */
 
 import NetworkExtension
+import Network
 import SwiftQueue
 import Transport
 
@@ -264,7 +265,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider
         
         let parameters = NWParameters()
         let connectQueue = DispatchQueue(label: "connectQueue")
-        connection = connectionFactory.connect(parameters)
+        connection = connectionFactory.connect(using: parameters)
         connection?.stateUpdateHandler = handleStateUpdate
         
         // Kick off the connection to the server

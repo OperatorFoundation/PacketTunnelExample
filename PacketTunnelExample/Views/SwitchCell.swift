@@ -9,7 +9,8 @@
 import UIKit
 
 /// A custom table cell object that contains a switch
-class SwitchCell: UITableViewCell {
+class SwitchCell: UITableViewCell
+{
 
 	// MARK: Properties
 

@@ -12,9 +12,12 @@ import NetworkExtension
 // MARK: Extensions
 
 /// Make NEOnDemandRuleAction convertible to a string
-extension NEOnDemandRuleAction: CustomStringConvertible {
-	public var description: String {
-		switch self {
+extension NEOnDemandRuleAction: CustomStringConvertible
+{
+	public var description: String
+    {
+		switch self
+        {
 			case .connect: return "Connect"
 			case .disconnect: return "Disconnect"
 			case .ignore: return "Maintain"
